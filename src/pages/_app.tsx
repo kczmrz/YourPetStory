@@ -1,7 +1,7 @@
 import { AppProps } from "next/app";
 import { ChakraProvider } from '@chakra-ui/react'
 import { extendTheme } from '@chakra-ui/react'
-
+import { NavLink } from "@/components";
 const colors = {
   brand: {
     900: '#1a365d',
@@ -15,8 +15,9 @@ export const theme = extendTheme({ colors })
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
-     <nav>Cos tam</nav>
+     
      <ChakraProvider theme={theme}>
+     <NavLink/>
       <Component {...pageProps} />
     </ChakraProvider>
     </>
