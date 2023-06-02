@@ -2,6 +2,9 @@ import { AppProps } from "next/app";
 import { ChakraProvider } from '@chakra-ui/react'
 import { extendTheme } from '@chakra-ui/react'
 import { Navbar } from "@/components";
+import { Provider as ReduxProvider } from "react-redux";
+import { store } from "@/redux/store/store";
+
 const colors = {
   brand: {
     900: '#1a365d',
@@ -15,11 +18,12 @@ export const theme = extendTheme({ colors })
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
-     
-     <ChakraProvider theme={theme}>
-     <Navbar/>
-      <Component {...pageProps} />
-    </ChakraProvider>
+     <ReduxProvider store={store}> 
+        <ChakraProvider theme={theme}>
+          <Navbar/>
+          <Component {...pageProps} />
+          </ChakraProvider>
+    </ReduxProvider>
     </>
   );
 }
