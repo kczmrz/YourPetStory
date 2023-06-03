@@ -11,7 +11,7 @@ import {
     Image,
   } from '@chakra-ui/react';
 
-export default function login() {
+export default function Login() {
 
     return (
         <>
