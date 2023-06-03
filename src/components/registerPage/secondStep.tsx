@@ -1,9 +1,15 @@
-import { Heading, Flex, FormControl, FormLabel, Input, GridItem, Select } from '@chakra-ui/react';
-import { useState } from "react";
+import { Heading, FormControl, FormLabel, Input, GridItem, Select } from '@chakra-ui/react';
+import { useState, useEffect } from "react";
+import GetCountriesNames from '@/utils/GetCountriesNames';
 
 export default function SecondStep() {
     const [show, setShow] = useState(false);
     const handleClick = () => setShow(!show);
+    const [countries, setCountries] = useState<string[]>()
+
+    useEffect(() => {
+      GetCountriesNames.get().then(res => setCountries(res.sort()))
+    }, [])
 
     return (
         <>
@@ -22,6 +28,7 @@ export default function SecondStep() {
             </FormLabel>
             <Input
               type="number"
+              min={5}
               focusBorderColor="brand.400"
               shadow="sm"
               size="sm"
@@ -51,9 +58,25 @@ export default function SecondStep() {
               size="sm"
               w="full"
               rounded="md">
-              <option>United States</option>
-              <option>Canada</option>
-              <option>Mexico</option>
+              {
+                countries ? (
+                countries.map((country) => (
+                  <option key={country} value={country}>
+                    {country}
+                  </option>
+                )))
+                : (<>
+                <option key="poland" value="poland">
+                  Poland
+                </option>
+                <option key="spain" value="spain">
+                  Spain
+                </option>
+                <option key="germany" value="germany">
+                  Germany
+                </option>
+                </>)
+              }
             </Select>
           </FormControl>
     
