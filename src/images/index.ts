@@ -1,7 +1,5 @@
-import { useColorMode } from "@chakra-ui/react";
-
 export const ImageLogo = {
-   logo1: require('../../public/images/logo/yps2.png')
+   logo1: require('../../public/images/logo/yps2.png'),
 }
 
 
@@ -12,3 +10,4 @@ export const BgImage = {
 }
 
 
+export const indexdog = require('../../public/images/other/indexdog.png');

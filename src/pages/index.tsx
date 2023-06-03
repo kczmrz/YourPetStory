@@ -17,9 +17,6 @@ export default function Home() {
     
     <main>
     <Box bgImage={BoxBG} height={'100vh'}>
-      <Button onClick={toggleColorMode}>
-        Toggle {colorMode === 'light' ? 'Dark' : 'Light'}
-      </Button>
       <IndexPage/>
       <Container>
 

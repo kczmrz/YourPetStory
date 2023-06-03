@@ -14,7 +14,8 @@ import {
   useColorModeValue,
   useBreakpointValue,
   useDisclosure,
-  Center
+  Center,
+  useColorMode
   
 } from '@chakra-ui/react';
 
@@ -23,6 +24,8 @@ import {
   CloseIcon,
   ChevronDownIcon,
   ChevronRightIcon,
+  MoonIcon,
+  SunIcon
 } from '@chakra-ui/icons';
 
 import { ThemeAppDay } from '@/app/ColorsTheme';
@@ -33,6 +36,16 @@ import Image from 'next/image';
 /* Sub nawigacja w mobilnym wygladzie navbaru, ten przycisk taki do rozwijania */
 export default function WithSubnavigation() {
   const { isOpen, onToggle } = useDisclosure();
+
+  /*Przycisk do zmiany motywu */
+  const { colorMode, toggleColorMode } = useColorMode();
+  
+  const changeIconToggleBtn = ()=> {
+    if(colorMode === 'dark') {
+      return <MoonIcon/>
+    }
+    else return <SunIcon/>
+  }
 
   return (
     <Box>
@@ -80,6 +93,11 @@ export default function WithSubnavigation() {
           justify={'flex-end'}
           direction={'row'}
           spacing={6}>
+         <Button onClick={toggleColorMode}>
+         <Icon color={'black'} w={3} h={3} as={()=> changeIconToggleBtn()} />
+         </Button>
+
+
           <Button
             as={'a'}
             fontSize={'sm'}
