@@ -25,7 +25,7 @@ import {
   ChevronRightIcon,
 } from '@chakra-ui/icons';
 
-import ThemeAppDay from '@/app/ColorsTheme';
+import { ThemeAppDay } from '@/app/ColorsTheme';
 import { ImageLogo } from '@/images';
 import Image from 'next/image';
 
