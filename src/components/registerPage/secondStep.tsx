@@ -8,8 +8,28 @@ export default function SecondStep() {
     return (
         <>
           <Heading w="100%" textAlign={'center'} fontWeight="normal" mb="2%">
-            User Details
+            Dane użytkownika
           </Heading>
+          <FormControl as={GridItem} mb={"1rem"}>
+            <FormLabel
+              fontSize="sm"
+              fontWeight="md"
+              color="gray.700"
+              _dark={{
+                color: 'gray.50',
+            }}>
+              Wiek
+            </FormLabel>
+            <Input
+              type="number"
+              focusBorderColor="brand.400"
+              shadow="sm"
+              size="sm"
+              w="full"
+              rounded="md"
+            >
+            </Input>
+          </FormControl>
           <FormControl as={GridItem} colSpan={[6, 3]}>
             <FormLabel
               htmlFor="country"
@@ -19,13 +39,13 @@ export default function SecondStep() {
               _dark={{
                 color: 'gray.50',
               }}>
-              Country / Region
+              Państwo
             </FormLabel>
             <Select
               id="country"
               name="country"
               autoComplete="country"
-              placeholder="Select option"
+              placeholder="Wybierz"
               focusBorderColor="brand.400"
               shadow="sm"
               size="sm"
@@ -47,7 +67,7 @@ export default function SecondStep() {
                 color: 'gray.50',
               }}
               mt="2%">
-              Street address
+              Ulica
             </FormLabel>
             <Input
               type="text"
@@ -72,63 +92,13 @@ export default function SecondStep() {
                 color: 'gray.50',
               }}
               mt="2%">
-              City
+              Miasto
             </FormLabel>
             <Input
               type="text"
               name="city"
               id="city"
               autoComplete="city"
-              focusBorderColor="brand.400"
-              shadow="sm"
-              size="sm"
-              w="full"
-              rounded="md"
-            />
-          </FormControl>
-    
-          <FormControl as={GridItem} colSpan={[6, 3, null, 2]}>
-            <FormLabel
-              htmlFor="state"
-              fontSize="sm"
-              fontWeight="md"
-              color="gray.700"
-              _dark={{
-                color: 'gray.50',
-              }}
-              mt="2%">
-              State / Province
-            </FormLabel>
-            <Input
-              type="text"
-              name="state"
-              id="state"
-              autoComplete="state"
-              focusBorderColor="brand.400"
-              shadow="sm"
-              size="sm"
-              w="full"
-              rounded="md"
-            />
-          </FormControl>
-    
-          <FormControl as={GridItem} colSpan={[6, 3, null, 2]}>
-            <FormLabel
-              htmlFor="postal_code"
-              fontSize="sm"
-              fontWeight="md"
-              color="gray.700"
-              _dark={{
-                color: 'gray.50',
-              }}
-              mt="2%">
-              ZIP / Postal
-            </FormLabel>
-            <Input
-              type="text"
-              name="postal_code"
-              id="postal_code"
-              autoComplete="postal-code"
               focusBorderColor="brand.400"
               shadow="sm"
               size="sm"

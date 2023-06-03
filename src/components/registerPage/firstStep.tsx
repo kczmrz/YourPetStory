@@ -9,46 +9,52 @@ export default function FirstStep() {
     return (
         <>
           <Heading w="100%" textAlign={'center'} fontWeight="normal" mb="2%">
-            User Registration
+            Rejestracja
           </Heading>
           <Flex>
             <FormControl mr="5%">
               <FormLabel htmlFor="first-name" fontWeight={'normal'}>
-                First name
+                Imie
               </FormLabel>
-              <Input id="first-name" placeholder="First name" />
+              <Input id="first-name" />
             </FormControl>
     
             <FormControl>
               <FormLabel htmlFor="last-name" fontWeight={'normal'}>
-                Last name
+                Nazwisko
               </FormLabel>
-              <Input id="last-name" placeholder="First name" />
+              <Input id="last-name" />
             </FormControl>
           </Flex>
           <FormControl mt="2%">
             <FormLabel htmlFor="email" fontWeight={'normal'}>
-              Email address
+              Email
             </FormLabel>
             <Input id="email" type="email" />
-            <FormHelperText>We'll never share your email.</FormHelperText>
           </FormControl>
     
           <FormControl>
             <FormLabel htmlFor="password" fontWeight={'normal'} mt="2%">
-              Password
+              Hasło
             </FormLabel>
-            <InputGroup size="md">
+            <InputGroup size="md" marginBottom={"1rem"}>
               <Input
                 pr="4.5rem"
                 type={show ? 'text' : 'password'}
-                placeholder="Enter password"
+                placeholder="Podaj hasło"
               />
               <InputRightElement width="4.5rem">
                 <Button h="1.75rem" size="sm" onClick={handleClick}>
                   {show ? 'Hide' : 'Show'}
                 </Button>
               </InputRightElement>
+            </InputGroup>
+            <InputGroup size="md">
+              <Input
+                pr="4.5rem"
+                type={show ? 'text' : 'password'}
+                placeholder="Powtórz hasło"
+              />
             </InputGroup>
           </FormControl>
         </>
