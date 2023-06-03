@@ -2,12 +2,13 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { create } from "domain";
 import { KindOfAnimal } from "@/enums/KindOfAnimal";
 import { KindOfBreed } from "@/types/KindOfBreed";
+import { EventTypes } from "@/types/EventTypes";
 
 /*Prowizoryczna struktura danych w kwestii zwierzaka, do rozbudowy koniecznie!!!! */
 
 interface event {
   DateOfEvent: Date;
-  Type: string /*vet etc */;
+  Type: EventTypes;
   Comment: string;
 }
 interface Pet {
