@@ -9,7 +9,7 @@ import {
     Stack,
     Image,
   } from '@chakra-ui/react';
-import Link from 'next/link'
+import Link from 'next/link';
 
 export default function Login() {
     return (
