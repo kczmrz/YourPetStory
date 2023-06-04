@@ -6,13 +6,12 @@ import {
     FormLabel,
     Heading,
     Input,
-    Link,
     Stack,
     Image,
   } from '@chakra-ui/react';
+import Link from 'next/link'
 
 export default function Login() {
-
     return (
         <>
         <Stack  height={'100vh'} direction={{ base: 'column', md: 'row' }}>
@@ -42,9 +41,11 @@ export default function Login() {
                         </Button>
                     </Flex>
                     <Flex direction={"row"} align={"center"} flex={1}>
-                        <Button colorScheme={'blue'} variant={'solid'} flex={1}>
-                        Zarejestruj się
-                        </Button>
+                        <Link href={'/register'}>
+                          <Button colorScheme={'blue'} variant={'solid'} flex={1}>
+                            Zajestruj się
+                          </Button>
+                        </Link>
                     </Flex>
                 </Stack>
                 </Stack>
