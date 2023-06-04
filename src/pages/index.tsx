@@ -16,7 +16,7 @@ export default function Home() {
     </Head>
     
     <main>
-    <Box bgImage={BoxBG} height={'100vh'}>
+    <Box bgImage={BoxBG}  height={{lg: '100vh', sm: '150vh'}}>
       <IndexPage/>
       <Container>
 
