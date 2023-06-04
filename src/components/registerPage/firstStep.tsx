@@ -1,4 +1,4 @@
-import { Heading, Flex, FormControl, FormLabel, Input, FormHelperText, InputGroup, InputRightElement, Button } from '@chakra-ui/react';
+import { Heading, Flex, FormControl, FormLabel, Input, FormHelperText, InputGroup, InputRightElement, Button, SimpleGrid, GridItem } from '@chakra-ui/react';
 import { useState } from "react";
 
 
@@ -37,25 +37,27 @@ export default function FirstStep() {
             <FormLabel htmlFor="password" fontWeight={'normal'} mt="2%">
               Hasło
             </FormLabel>
-            <InputGroup size="md" marginBottom={"1rem"}>
-              <Input
-                pr="4.5rem"
-                type={show ? 'text' : 'password'}
-                placeholder="Podaj hasło"
-              />
-              <InputRightElement width="4.5rem">
-                <Button h="1.75rem" size="sm" onClick={handleClick}>
-                  {show ? 'Hide' : 'Show'}
-                </Button>
-              </InputRightElement>
-            </InputGroup>
-            <InputGroup size="md">
-              <Input
-                pr="4.5rem"
-                type={show ? 'text' : 'password'}
-                placeholder="Powtórz hasło"
-              />
-            </InputGroup>
+            <SimpleGrid columns={2} spacing={5}>
+              <InputGroup as={GridItem} size="md" marginBottom={"1rem"}>
+                <Input
+                  pr="4.5rem"
+                  type={show ? 'text' : 'password'}
+                  placeholder="Podaj hasło"
+                  />
+                <InputRightElement width="4.5rem">
+                  <Button h="1.75rem" size="sm" onClick={handleClick}>
+                    {show ? 'Schowaj' : 'Pokaż'}
+                  </Button>
+                </InputRightElement>
+              </InputGroup>
+              <InputGroup as={GridItem} size="md">
+                <Input
+                  pr="4.5rem"
+                  type={show ? 'text' : 'password'}
+                  placeholder="Powtórz hasło"
+                  />
+              </InputGroup>
+            </SimpleGrid>
           </FormControl>
         </>
       );
