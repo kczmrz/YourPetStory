@@ -59,7 +59,7 @@ export default function Register()  {
                     variant="solid"
                     w="7rem"
                     mr="5%">
-                    Back
+                    Wróć
                   </Button>
                   <Button
                     w="7rem"
@@ -74,7 +74,7 @@ export default function Register()  {
                     }}
                     colorScheme="teal"
                     variant="outline">
-                    Next
+                    Dalej
                   </Button>
                 </Flex>
                 {step === 3 ? (
@@ -91,7 +91,7 @@ export default function Register()  {
                         isClosable: true,
                       });
                     }}>
-                    Submit
+                    Zatwierdź
                   </Button>
                 ) : null}
               </Flex>
