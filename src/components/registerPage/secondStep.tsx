@@ -16,6 +16,32 @@ export default function SecondStep() {
           <Heading w="100%" textAlign={'center'} fontWeight="normal" mb="2%">
             Dane użytkownika
           </Heading>
+
+          <FormControl as={GridItem} colSpan={6}  mb={"1rem"}>
+            <FormLabel
+              htmlFor="street_address"
+              fontSize="sm"
+              fontWeight="md"
+              color="gray.700"
+              _dark={{
+                color: 'gray.50',
+              }}
+              mt="2%">
+              Nick
+            </FormLabel>
+            <Input
+              type="text"
+              name="street_address"
+              id="street_address"
+              autoComplete="street-address"
+              focusBorderColor="brand.400"
+              shadow="sm"
+              size="sm"
+              w="full"
+              rounded="md"
+            />
+          </FormControl>
+          
           <FormControl as={GridItem} mb={"1rem"}>
             <FormLabel
               fontSize="sm"
@@ -80,31 +106,6 @@ export default function SecondStep() {
             </Select>
           </FormControl>
     
-          <FormControl as={GridItem} colSpan={6}>
-            <FormLabel
-              htmlFor="street_address"
-              fontSize="sm"
-              fontWeight="md"
-              color="gray.700"
-              _dark={{
-                color: 'gray.50',
-              }}
-              mt="2%">
-              Ulica
-            </FormLabel>
-            <Input
-              type="text"
-              name="street_address"
-              id="street_address"
-              autoComplete="street-address"
-              focusBorderColor="brand.400"
-              shadow="sm"
-              size="sm"
-              w="full"
-              rounded="md"
-            />
-          </FormControl>
-    
           <FormControl as={GridItem} colSpan={[6, 6, null, 2]}>
             <FormLabel
               htmlFor="city"
@@ -132,3 +133,5 @@ export default function SecondStep() {
         </>
       );
 }
+        
+    

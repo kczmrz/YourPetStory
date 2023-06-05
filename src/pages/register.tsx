@@ -4,30 +4,31 @@ import {
   Box,
   ButtonGroup,
   Button,
-  Heading,
   Flex,
-  FormControl,
-  GridItem,
-  FormLabel,
-  Input,
-  Select,
-  SimpleGrid,
-  InputLeftAddon,
-  InputGroup,
-  Textarea,
-  FormHelperText,
-  InputRightElement,
 } from '@chakra-ui/react';
-
 import { useToast } from '@chakra-ui/react';
 import FirstStep from '@/components/registerPage/firstStep';
 import SecondStep from '@/components/registerPage/secondStep';
 import ThirdStep from '@/components/registerPage/thirdStep';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/redux/store/store';
 
 export default function Register()  {
     const toast = useToast();
     const [step, setStep] = useState(1);
     const [progress, setProgress] = useState(33.33);
+
+    /*Redux */
+    const { user_name, surrname, email, password, password2 } = useSelector((state: RootState) => state.Register)
+        
+    /*Sprawdzanie etapu pierwszego */
+
+    const CheckFirstStep = () => {
+        if(step == 1){
+            
+        }
+        else return;
+    }
 
     return (
         <>
