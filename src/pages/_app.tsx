@@ -16,6 +16,7 @@ const colors = {
 export const theme = extendTheme({
   colors: {colors},
    breakpoints: {
+    xsm: '15em', //
     sm: '30em', // 480px
     md: '48em', // 768px
     lg: '62em', // 992px

@@ -8,8 +8,8 @@ export default function AboutPageComponent()
     return(<>
             <Center h={"100%"}>
                 <Stack display={"flex"} direction={{lg: 'row', md: 'column', sm: 'column'}} h={"100%"}>
-                    <Stack w={"50%"} direction={"column"} alignItems={"center"} textAlign={"center"} fontSize={"2xl"} gap={"2rem"} mt={"2rem"} width={{lg: "50%", md: "100%"}}>
-                        <Text fontSize={"3xl"}>
+                    <Stack w={{lg: "50%", md: "100%", sm: "100%"}} direction={"column"} alignItems={"center"} textAlign={"center"} fontSize={"2xl"} gap={"2rem"} mt={"2rem"} marginLeft={"1rem"} marginRight={"1rem"}>
+                        <Text fontSize={"6xl"}>
                             O nas
                         </Text>
                         <Text>
@@ -30,7 +30,7 @@ export default function AboutPageComponent()
                         </Button>
                         </Link>
                     </Stack>
-                    <Box width={{lg: "50%", md: "100%"}} display={"flex"} alignItems={"center"} justifyContent={"center"}>
+                    <Box w={{lg: "50%", md: "100%"}} display={{lg: "flex", xsm: "none"}} alignItems={"center"} justifyContent={"center"}>
                         <Image src={indexdog} alt=""/>
                     </Box>
                 </Stack>
