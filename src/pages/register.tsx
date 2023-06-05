@@ -19,7 +19,7 @@ export default function Register()  {
     const [progress, setProgress] = useState(33.33);
 
     /*Redux */
-    const { user_name, surrname, email, password, password2 } = useSelector((state: RootState) => state.Register)
+    const { user_name, surrname, email, password, password2, nick, age, country, city } = useSelector((state: RootState) => state.Register)
         
     /*Sprawdzanie etapu pierwszego */
 
@@ -29,6 +29,15 @@ export default function Register()  {
         }
         else return;
     }
+
+    /*Sprawdzanie etapu drugiego */
+
+    const CheckSecongStep = () => {
+      if(step == 2){
+          
+      }
+      else return;
+  }
 
     return (
         <>

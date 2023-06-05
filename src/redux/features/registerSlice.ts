@@ -89,5 +89,6 @@ export const Register = createSlice({
 
 
   
-  export const { updateNameForm, updateSurrNameForm, updateEmail, updatePassword, updatePassword2 } = Register.actions;
+  export const { updateNameForm, updateSurrNameForm, updateEmail, updatePassword, updatePassword2, 
+    updateNickname, updateAge, updateCountry, updateCity } = Register.actions;
   export default Register.reducer;
