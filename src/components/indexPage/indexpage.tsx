@@ -11,7 +11,7 @@ export default function IndexPage() {
   const btnFirst_hover = useColorModeValue(ThemeAppDay.lgreen1, "yellow.400")
    return(
     <>
-    <Stack minH={'80vh'} direction={{base: 'column', md: 'row'}}>
+    <Stack minH={'80vh'} direction={{xl: 'row', md: 'row'}}>
       <Flex p={8} flex={1} align={'center'} justify={'center'}>
         <Fade in={true}> 
            <Stack spacing={6} w={'full'} maxW={'lg'}>

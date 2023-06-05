@@ -6,9 +6,9 @@ import { indexdog } from '../../images/index'
 export default function AboutPageComponent()
 {
     return(<>
-            <Center justifyContent={"center"} >
-                <Box display={"flex"} flexDirection={"row"}>
-                    <Stack w={"60%"} direction={"column"} alignItems={"center"} textAlign={"center"} fontSize={"2xl"} gap={"2rem"} mt={"2rem"}>
+            <Center h={"100%"}>
+                <Stack display={"flex"} direction={{lg: 'row', md: 'column', sm: 'column'}} h={"100%"}>
+                    <Stack w={"50%"} direction={"column"} alignItems={"center"} textAlign={"center"} fontSize={"2xl"} gap={"2rem"} mt={"2rem"} width={{lg: "50%", md: "100%"}}>
                         <Text fontSize={"3xl"}>
                             O nas
                         </Text>
@@ -30,10 +30,10 @@ export default function AboutPageComponent()
                         </Button>
                         </Link>
                     </Stack>
-                    <Box w={"40%"} display={"flex"} alignItems={"center"} justifyContent={"center"}>
-                        <Image src={indexdog} alt="" width={"500"}/>
+                    <Box width={{lg: "50%", md: "100%"}} display={"flex"} alignItems={"center"} justifyContent={"center"}>
+                        <Image src={indexdog} alt=""/>
                     </Box>
-                </Box>
+                </Stack>
             </Center>
     </>)
 }
