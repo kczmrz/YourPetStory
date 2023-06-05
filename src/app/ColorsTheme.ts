@@ -1,8 +1,4 @@
-
-
-
- 
- const ThemeAppDay = {
+const ThemeAppDay = {
     dgreen: '#123429 ',
     lgreen1: '#2c8160 ',
     lgreen2: '#539a77 ',
