@@ -3,12 +3,20 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { indexdog } from '../../images/index'
 import { ThemeAppDay } from "@/app/ColorsTheme";
+import TextDescription from "./TextDescripton";
 
 export default function AboutPageComponent()
 {
     const HeaderBackgroundColor = useColorModeValue(ThemeAppDay.lgreen1, "yellow.100");
     const BtnBackgroundColor = useColorModeValue(ThemeAppDay.lgreen2, "yellow.600");
     const BtnHoverBackgroundColor = useColorModeValue(ThemeAppDay.lgreen1, "yellow.400");
+
+    const Descriptions: string[] = [
+        "Nasza aplikacja to wszechstronne narzędzie, które pomoże Ci w organizacji i dbaniu o ważne wydarzenia związane z Twoimi zwierzakami. Niezależnie od tego, czy posiadasz psa, kota, królika czy innego pupila, nasza aplikacja jest dostosowana do Twoich potrzeb.",
+        "Z naszą aplikacją możesz łatwo tworzyć i zarządzać harmonogramem wydarzeń dla swojego zwierzęcia. Czy to wizyta u weterynarza, rutynowe szczepienia, pielęgnacja, treningi czy ważne daty, takie jak urodziny czy rocznice, nasze narzędzia pomogą Ci zorganizować wszystko w jednym miejscu. Niezależnie od ilości zwierząt, możesz tworzyć oddzielne kalendarze dla każdego z nich, aby niczego nie przegapić.",
+        "Dbamy o prostotę i intuicyjność naszej aplikacji, aby była łatwa w obsłudze dla wszystkich użytkowników. Zrozumienie, jak ważne są nasze zwierzęta, stawiamy na ergonomiczny interfejs, który umożliwia łatwą nawigację i dostęp do wszystkich funkcji.",
+        "Zapraszamy do dołączenia do naszej społeczności miłośników zwierząt domowych i odkrycia, jak nasza aplikacja może ułatwić Ci życie i umożliwić Ci jeszcze większą troskę o swoje futrzane przyjaciółki i przyjaciół."
+    ]
 
     return(<>
             <Center h={"100%"}>
@@ -26,18 +34,11 @@ export default function AboutPageComponent()
                         <Text fontSize={"6xl"} color={HeaderBackgroundColor}>
                             O nas
                         </Text>
-                        <Text fontSize={{ "2xl": "2xl", md: "xl" }}>
-                            Nasza aplikacja to wszechstronne narzędzie, które pomoże Ci w organizacji i dbaniu o ważne wydarzenia związane z Twoimi zwierzakami. Niezależnie od tego, czy posiadasz psa, kota, królika czy innego pupila, nasza aplikacja jest dostosowana do Twoich potrzeb.
-                        </Text>
-                        <Text fontSize={{ "2xl": "2xl", md: "xl" }}>
-                            Z naszą aplikacją możesz łatwo tworzyć i zarządzać harmonogramem wydarzeń dla swojego zwierzęcia. Czy to wizyta u weterynarza, rutynowe szczepienia, pielęgnacja, treningi czy ważne daty, takie jak urodziny czy rocznice, nasze narzędzia pomogą Ci zorganizować wszystko w jednym miejscu. Niezależnie od ilości zwierząt, możesz tworzyć oddzielne kalendarze dla każdego z nich, aby niczego nie przegapić.
-                        </Text>
-                        <Text fontSize={{ "2xl": "2xl", md: "xl" }}>
-                            Dbamy o prostotę i intuicyjność naszej aplikacji, aby była łatwa w obsłudze dla wszystkich użytkowników. Zrozumienie, jak ważne są nasze zwierzęta, stawiamy na ergonomiczny interfejs, który umożliwia łatwą nawigację i dostęp do wszystkich funkcji.
-                        </Text>
-                        <Text fontSize={{ "2xl": "2xl", md: "xl" }}>
-                            Zapraszamy do dołączenia do naszej społeczności miłośników zwierząt domowych i odkrycia, jak nasza aplikacja może ułatwić Ci życie i umożliwić Ci jeszcze większą troskę o swoje futrzane przyjaciółki i przyjaciół.
-                        </Text>
+
+                        {Descriptions.map((paragraph) => (
+                            <TextDescription description={paragraph}/>
+                        ))}
+                        
                         <Link href={"/login"}>
                         <Button colorScheme={'blue'} 
                             variant={'solid'} 
