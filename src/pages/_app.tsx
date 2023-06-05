@@ -4,6 +4,7 @@ import { extendTheme } from '@chakra-ui/react'
 import { Navbar } from "@/components";
 import { Provider as ReduxProvider } from "react-redux";
 import { store } from "@/redux/store/store";
+import { Footer } from '@/components'
 
 const colors = {
   brand: {
@@ -33,6 +34,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <ChakraProvider theme={theme}>
           <Navbar/>
           <Component {...pageProps} />
+          <Footer/>
           </ChakraProvider>
     </ReduxProvider>
     </>
