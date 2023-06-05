@@ -5,10 +5,10 @@ import { indexdog } from "@/images"
 import { ThemeAppDay } from "@/app/ColorsTheme";
 export default function IndexPage() {
 
-  const Header2 = useColorModeValue(ThemeAppDay.lgreen1, "yellow.100");
-  const Describe = useColorModeValue("black", "white");
-  const btnFirst = useColorModeValue(ThemeAppDay.lgreen2, "yellow.600")
-  const btnFirst_hover = useColorModeValue(ThemeAppDay.lgreen1, "yellow.400")
+  const HeaderBackgroundColor = useColorModeValue(ThemeAppDay.lgreen1, "yellow.100");
+  const TextDescriptionColor = useColorModeValue("black", "white");
+  const BtnBackgroundColor = useColorModeValue(ThemeAppDay.lgreen2, "yellow.600")
+  const BtnHoverBackgroundColor = useColorModeValue(ThemeAppDay.lgreen1, "yellow.400")
    return(
     <>
     <Stack minH={'80vh'} direction={{xl: 'row', md: 'row'}}>
@@ -23,12 +23,12 @@ export default function IndexPage() {
                 Zaoferuj swoim pupilom najlepszą opiekę
                 </Text>
               <br />{' '}
-            <Text color={Header2} as={'span'} fontSize={{ base: '1xl', md: '2xl', lg: '3xl' }}>
+            <Text color={HeaderBackgroundColor} as={'span'} fontSize={{ base: '1xl', md: '2xl', lg: '3xl' }}>
                Z naszą aplikacją to prostsze niż myślisz!
             </Text>{' '}
             </Heading>
            
-            <Text fontSize={{ base: 'md', lg: 'lg' }} color={Describe}>
+            <Text fontSize={{ base: 'md', lg: 'lg' }} color={TextDescriptionColor}>
             Nasza aplikacja zapewni Ci pełną kontrolę nad opieką nad Twoim zwierzakiem! Wizyty u weterynarza, zajęcia z tresury czy wizyty u psiego fryzjera staną się teraz łatwe do zaplanowania i nie będą wymykać się spod kontroli. Dodatkowo, będziesz mógł śledzić rozwój i zmiany Twojego pupila wraz z jego dorastaniem. Ciesz się pełnym spektrum opieki nad swoim zwierzakiem dzięki naszej aplikacji
           
           </Text>
@@ -37,10 +37,10 @@ export default function IndexPage() {
             <Link href={'/register'}>
               <Button
               rounded={'full'}
-              bg={btnFirst}
+              bg={BtnBackgroundColor}
               color={'white'}
               _hover={{
-                bg: btnFirst_hover,
+                bg: BtnHoverBackgroundColor,
               }}>
               Dołącz do nas!
               </Button>
