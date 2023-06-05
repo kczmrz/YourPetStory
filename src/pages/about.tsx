@@ -8,6 +8,7 @@ export default function About()
      /* Dzien / Noc - motyw */
   const BoxBG = useColorModeValue(BgImage.day, BgImage.night);
   const { colorMode, toggleColorMode } = useColorMode();
+  
  return(
   <>
     <Head>
