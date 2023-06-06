@@ -1,7 +1,7 @@
 import { expect, test } from "@jest/globals";
 import { LoginAndPasswordValidation } from "../../src/utils/DatasValidation/LoginAndPasswordValidation";
 
-describe("Login validation,", () => {
+describe("Login validation, ", () => {
   test("should return false when login length is short than 5", () => {
     const exampleLogin = "test";
 
@@ -30,5 +30,20 @@ describe("Login validation,", () => {
     const exampleLogin = "Testing!";
 
     expect(LoginAndPasswordValidation.validateLogin(exampleLogin)).toBe(true);
+  });
+});
+
+describe("Password validation, ", () => {
+  test("should return false when password does not contain the special character", () => {
+    const password = "Test123";
+    const result = LoginAndPasswordValidation.validatePassword(password);
+
+    expect(result).toBe(false);
+  });
+
+  test("should return true when passward is matching all requirements", () => {
+    const password = "Test12@";
+    const result = LoginAndPasswordValidation.validatePassword(password);
+    expect(result).toBe(true);
   });
 });
