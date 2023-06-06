@@ -7,7 +7,7 @@ import {
   Stack,
   Collapse,
   Icon,
-  Link,
+  Link as ChakraLink,
   Popover,
   PopoverTrigger,
   PopoverContent,
@@ -31,6 +31,7 @@ import {
 import { ThemeAppDay } from '@/app/ColorsTheme';
 import { ImageLogo } from '@/images';
 import Image from 'next/image';
+import Link from 'next/link';
 
 
 /* Sub nawigacja w mobilnym wygladzie navbaru, ten przycisk taki do rozwijania */
@@ -79,7 +80,9 @@ export default function WithSubnavigation() {
             textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
             fontFamily={'heading'}
             color={useColorModeValue('white', 'white')}>
+              <Link href={'/'}> 
               <Image src={ImageLogo.logo1} alt={"logo"} width={70}/>
+              </Link>
           </Text>
 
           <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
@@ -97,29 +100,34 @@ export default function WithSubnavigation() {
          <Icon color={'black'} w={3} h={3} as={()=> changeIconToggleBtn()} />
          </Button>
 
-
+         <Link href={'/login'}>
+            <Button
+              
+                fontSize={'sm'}
+               fontWeight={600}
+               color={'white'}
+              
+               display={'inline-flex'}
+              >
+               Zaloguj się
+             </Button>
+        </Link>
+        
+        <Link href={'/register'}>
           <Button
-            as={'a'}
-            fontSize={'sm'}
-            fontWeight={400}
-            variant={'link'}
-            color={'white'}
-            href={'#'}>
-            Zaloguj się
-          </Button>
-          <Button
-            as={'a'}
+            
             display={{ base: 'none', md: 'inline-flex' }}
             fontSize={'sm'}
             fontWeight={600}
             color={'white'}
             bg={ThemeAppDay.mint}
-            href={'#'}
+            
             _hover={{
               bg: ThemeAppDay.lgreen1,
             }}>
             Zarejestruj się
           </Button>
+          </Link>
         </Stack>
 
       </Flex>
@@ -144,18 +152,7 @@ const DesktopNav = () => {
         <Box key={navItem.label}>
           <Popover trigger={'hover'} placement={'bottom-start'} >
             <PopoverTrigger>
-             
-              <Link
-                href={navItem.href ?? '#'}
-                fontSize={'sm'}
-                fontWeight={500}
-                color={'white'}
-                _hover={{
-                  textDecoration: 'none',
-                  color: linkHoverColor,
-                }}>
-                {navItem.label}
-              </Link>
+             {/* Miejsce na linki */}
             
             </PopoverTrigger>
 
@@ -184,7 +181,7 @@ const DesktopNav = () => {
 /* divy po najechaniu na te linki po lewej stronie */
 const DesktopSubNav = ({ label, href, subLabel }: NavItem) => {
   return (
-    <Link
+    <ChakraLink
       href={href}
       role={'group'}
       display={'block'}
@@ -212,7 +209,7 @@ const DesktopSubNav = ({ label, href, subLabel }: NavItem) => {
           <Icon color={'pink.400'} w={5} h={5} as={ChevronRightIcon} />
         </Flex>
       </Stack>
-    </Link>
+    </ChakraLink>
   );
 };
 
@@ -272,9 +269,9 @@ const MobileNavItem = ({ label, children, href }: NavItem) => {
           align={'start'}>
           {children &&
             children.map((child) => (
-              <Link key={child.label} py={2} href={child.href}>
+              <ChakraLink key={child.label} py={2} href={child.href}>
                 {child.label}
-              </Link>
+              </ChakraLink>
             ))}
         </Stack>
       </Collapse>
