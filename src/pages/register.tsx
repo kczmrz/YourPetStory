@@ -12,6 +12,7 @@ import SecondStep from '@/components/registerPage/secondStep';
 import ThirdStep from '@/components/registerPage/thirdStep';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/redux/store/store';
+import Head from 'next/head';
 
 export default function Register()  {
     const toast = useToast();
@@ -41,6 +42,10 @@ export default function Register()  {
 
     return (
         <>
+        <Head>
+          <title>Zarejestruj się!</title>
+        </Head>
+        <main>
           <Box
             borderWidth="1px"
             rounded="lg"
@@ -107,6 +112,7 @@ export default function Register()  {
               </Flex>
             </ButtonGroup>
           </Box>
+        </main>
         </>
       );
 
