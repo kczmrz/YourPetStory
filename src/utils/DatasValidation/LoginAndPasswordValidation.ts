@@ -1,4 +1,4 @@
-export abstract class LoginValidation {
+export abstract class LoginAndPasswordValidation {
   private static specialSigns: string[] = ["_", "-", "!", "@", "?"];
 
   private static containsAnySpecialCharacter(inputLogin: string): boolean {
@@ -13,18 +13,26 @@ export abstract class LoginValidation {
     return Array.from(login).some((char) => char !== char.toUpperCase());
   }
 
-  static validate(login: string): boolean {
+  static validateLogin(login: string): boolean {
     const isLengthValid: boolean = login.length > 5;
-    const containsSpecialChar: boolean =
-      this.containsAnySpecialCharacter(login);
     const containsUppercase: boolean = this.containsUppercaseLetter(login);
     const containsLowercase: boolean = this.containsLowercaseLetter(login);
 
+    return isLengthValid && containsUppercase && containsLowercase;
+  }
+
+  static validatePassword(password: string): boolean {
+    const isLengthValid: boolean = password.length > 5;
+    const containsUppercase: boolean = this.containsUppercaseLetter(password);
+    const containsLowercase: boolean = this.containsLowercaseLetter(password);
+    const containsSpecialCharacter: boolean =
+      this.containsAnySpecialCharacter(password);
+
     return (
       isLengthValid &&
-      containsSpecialChar &&
       containsUppercase &&
-      containsLowercase
+      containsLowercase &&
+      containsSpecialCharacter
     );
   }
 }
