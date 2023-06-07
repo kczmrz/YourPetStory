@@ -1,5 +1,5 @@
 import { Heading, FormControl, FormLabel, Input, GridItem, Select } from '@chakra-ui/react';
-import { useState, useEffect } from "react";
+import { useState, useEffect, useReducer } from "react";
 import GetCountriesNames from '@/utils/GetCountriesNames';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '@/redux/store/store';
@@ -9,7 +9,6 @@ export default function SecondStep() {
     const [show, setShow] = useState(false);
     const handleClick = () => setShow(!show);
     const [countries, setCountries] = useState<string[]>()
-
 
    /*Redux */
     const dispatch = useDispatch();
