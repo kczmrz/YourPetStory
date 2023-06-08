@@ -15,7 +15,8 @@ import { RootState } from '@/redux/store/store';
 import Head from 'next/head';
 import { EmailValidation } from '@/utils/DatasValidation/EmailValidation';
 import { LoginAndPasswordValidation } from '@/utils/DatasValidation/LoginAndPasswordValidation';
-
+import axios from 'axios';
+import { User } from '@/mongoDB/schemas/account';
 
 export default function RegisterForm() {
     const toast = useToast();
@@ -56,6 +57,29 @@ export default function RegisterForm() {
           }
       }
       else return;
+  }
+
+
+  const Register = async () => {
+
+    const AccountData:User =  {
+      ID: "Testowe ID",
+      name: user_name,
+      surrname:surrname,
+      email: email,
+      password: password,
+      nick: nick,
+      age: age,
+      country: country,
+      city: city,
+  }
+    
+  await axios.post('/api/AddUser', 
+    AccountData
+  );
+      
+   
+
   }
 
     return (
@@ -119,18 +143,13 @@ export default function RegisterForm() {
                 {step === 3 ? (
                   <Button
                     w="7rem"
-                    colorScheme="red"
-                    variant="solid"
+                    colorScheme="green"
+                    variant="outline"
                     onClick={() => {
-                      toast({
-                        title: 'Account created.',
-                        description: "We've created your account for you.",
-                        status: 'success',
-                        duration: 3000,
-                        isClosable: true,
-                      });
-                    }}>
-                    Zatwierdź
+                      Register();
+                    }}
+                  >
+                    Może później
                   </Button>
                 ) : null}
               </Flex>
