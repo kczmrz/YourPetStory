@@ -119,18 +119,18 @@ export default function RegisterForm() {
                 {step === 3 ? (
                   <Button
                     w="7rem"
-                    colorScheme="red"
-                    variant="solid"
+                    colorScheme="green"
+                    variant="outline"
                     onClick={() => {
                       toast({
-                        title: 'Account created.',
-                        description: "We've created your account for you.",
+                        title: 'Konto utworzone',
+                        description: "Czas działać!",
                         status: 'success',
                         duration: 3000,
                         isClosable: true,
                       });
                     }}>
-                    Zatwierdź
+                    Może później
                   </Button>
                 ) : null}
               </Flex>
