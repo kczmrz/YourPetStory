@@ -69,6 +69,7 @@ export default function ThirdStep() {
             _placeholder={{ color: 'gray.500' }}
             type="date"
           />
+          <Text as={'i'}>(Jeśli nie pamiętasz podaj przybliżoną datę)</Text>
         </FormControl>
         <Stack spacing={6} direction={['column', 'row']}>
           <Button
