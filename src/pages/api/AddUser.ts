@@ -6,6 +6,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     /*dane są pobierane z body */
     const { user_name, surrname, email, password, password2, nick, age, country, city } = req.body;
+    
+    /*Pierwszy string to nazwa bazy danych, a drugi to kolekcja w tej bazie */
     const collection = await getCollection("Users", "users");
     if (req.method === 'POST') {
       try {

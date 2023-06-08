@@ -76,7 +76,7 @@ export default function RegisterForm() {
     
   await axios.post('/api/AddUser', 
     AccountData
-  ).then(()=> alert('dziala')).catch((e)=>console.log(e))
+  );
       
    
 
