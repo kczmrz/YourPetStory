@@ -1,5 +1,8 @@
 import { Schema } from 'mongoose';
+import mongoose from 'mongoose';
 
+
+/*Interfejs dla schematu User */
 
 interface User {
     name: string;
@@ -14,7 +17,8 @@ interface User {
     pets?: any[];  /*Trzeba będzie zrobić interface Pet, bo to będzie array z obiektami. I w interface pet musi być wszystko */
     userAvatar?: string; /*Można potem potem dodać user avatar, ale na tym narazie się nie skupiajmy, to taki bajer :p */
 }
-    
+
+
 const UserSchema =  new Schema<User>({
     name: { type: String, required: true },
     surrname: { type: String, required: true },
@@ -27,7 +31,7 @@ const UserSchema =  new Schema<User>({
 
     pets: { type: String, required: false },
     userAvatar: { type: String, required: false },
+});
 
 
-
-  });
+const UserModel = mongoose.model('User', UserSchema);
