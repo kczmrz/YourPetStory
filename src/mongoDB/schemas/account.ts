@@ -1,10 +1,11 @@
-import { Schema } from 'mongoose';
+import { Schema, Document } from 'mongoose';
 import mongoose from 'mongoose';
 
 
 /*Interfejs dla schematu User */
 
-interface User {
+export interface User {
+    ID: string;
     name: string;
     surrname:string;
     email: string;
@@ -20,6 +21,7 @@ interface User {
 
 
 const UserSchema =  new Schema<User>({
+    ID: { type: String, required: true },
     name: { type: String, required: true },
     surrname: { type: String, required: true },
     email: { type: String, required: true },
@@ -31,7 +33,9 @@ const UserSchema =  new Schema<User>({
 
     pets: { type: String, required: false },
     userAvatar: { type: String, required: false },
-});
+}, { collection: 'users' });   /* Ta ostatnia linijka to nazwa kolekcji */
 
 
-const UserModel = mongoose.model('User', UserSchema);
+
+
+export default mongoose.models.User || mongoose.model<User>('User', UserSchema);
