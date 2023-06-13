@@ -3,7 +3,8 @@ import AppDashboard from '../components/dashboard/AppDashboard'
 
 export default function() {
 
-    return (
-        <AppDashboard />
+    return (<> 
+            <AppDashboard  > </AppDashboard>
+        </>
     )
 }

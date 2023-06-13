@@ -23,13 +23,15 @@ import {
   FiMenu,
 } from 'react-icons/fi';
 import { IconType } from 'react-icons';
-import { ReactText } from 'react';
+import SideBarContent from './SideBarContent';
+
+
 
 export default function SimpleSidebar({ children }: { children: ReactNode }) {
     const { isOpen, onOpen, onClose } = useDisclosure();
     return (
       <Box minH="100vh" bg={useColorModeValue('gray.100', 'gray.900')}>
-        <SidebarContent
+        <SideBarContent
           onClose={() => onClose}
           display={{ base: 'none', md: 'block' }}
         />
@@ -42,7 +44,7 @@ export default function SimpleSidebar({ children }: { children: ReactNode }) {
           onOverlayClick={onClose}
           size="full">
           <DrawerContent>
-            <SidebarContent onClose={onClose} />
+            <SideBarContent onClose={onClose} />
           </DrawerContent>
         </Drawer>
         {/* mobilenav */}
