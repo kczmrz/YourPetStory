@@ -105,6 +105,7 @@ export default function WithSubnavigation() {
               
                 fontSize={'sm'}
                fontWeight={600}
+               bgColor={'gray.500'}
                color={'white'}
               
                display={'inline-flex'}
