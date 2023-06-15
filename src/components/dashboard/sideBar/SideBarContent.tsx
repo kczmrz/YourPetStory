@@ -34,9 +34,10 @@ const LinkItems: Array<ILinkItemProps> = [
           bg={useColorModeValue('white', 'gray.900')}
           borderRight="1px"
           borderRightColor={useColorModeValue('gray.200', 'gray.700')}
-          w={{ base: 'full', md: 60 }}
+          w={{ base: "full", md: "10vw"}}
           pos="sticky"
           h={"100vh"}
+          bgColor={"yellow"}
           {...rest}>
           <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
             <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold" textAlign={"center"}>
