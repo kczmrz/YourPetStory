@@ -51,7 +51,7 @@ export default function WithSubnavigation() {
   return (
     <Box>
       <Flex
-        bg={useColorModeValue(ThemeAppDay.dgreen, 'gray.800')}
+        bg={useColorModeValue(ThemeAppDay.lightAshen, 'gray.800')}
         color={useColorModeValue('white', 'white')}
         minH={'60px'}
         py={{ base: 2 }}
@@ -120,12 +120,7 @@ export default function WithSubnavigation() {
             display={{ base: 'none', md: 'inline-flex' }}
             fontSize={'sm'}
             fontWeight={600}
-            color={'white'}
-            bg={ThemeAppDay.mint}
-            
-            _hover={{
-              bg: ThemeAppDay.lgreen1,
-            }}>
+            color={'white'}>
             Zarejestruj się
           </Button>
           </Link>

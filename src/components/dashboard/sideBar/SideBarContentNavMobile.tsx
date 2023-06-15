@@ -21,6 +21,7 @@ export default function SideBarContentNavMobile({ onOpen, ...rest }: INavMobileP
           borderBottomWidth="1px"
           borderBottomColor={useColorModeValue('gray.200', 'gray.700')}
           justifyContent="flex-start"
+          w={"full"}
           {...rest}>
           <IconButton
             variant="outline"
