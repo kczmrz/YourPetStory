@@ -6,7 +6,7 @@ import {
   Button,
   Flex,
 } from '@chakra-ui/react';
-import { useToast } from '@chakra-ui/react';
+import { useToast } from '@chakra-ui/react'
 import FirstStep from '@/components/registerPage/firstStep';
 import SecondStep from '@/components/registerPage/secondStep';
 import ThirdStep from '@/components/registerPage/thirdStep';
@@ -18,26 +18,69 @@ import { LoginAndPasswordValidation } from '@/utils/DatasValidation/LoginAndPass
 import axios from 'axios';
 import { User } from '@/mongoDB/schemas/account';
 
+
+
 export default function RegisterForm() {
-    const toast = useToast();
     const [step, setStep] = useState(1);
     const [progress, setProgress] = useState(33.33);
+    const [EmailInDB, setEmailInDb] = useState<boolean>();
+    const toast = useToast();
 
     /*Redux */
     const { user_name, surrname, email, password, password2, nick, age, country, city } = useSelector((state: RootState) => state.Register)
         
+    /*Alerty */
+    const DisplayAlert = (message: string)=> {
+      toast({
+        title: "Błąd",
+        description: message,
+        status: 'info',
+        duration: 3000,
+        isClosable: true,
+      })
+    }
+    /* Czy email jest w bazie danych? */
+    const checkEmailInDB = async ()=> {
+      try {
+        const response = await fetch('/api/check/Email', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ email })
+        }).then((res)=> {
+          if(res.status === 400) {
+            setEmailInDb(true);
+            DisplayAlert("Email jest zajęty!");
+          }
+          else {
+             setEmailInDb(false);
+          }
+        })
+        
+        
+      } 
+      catch {
+        console.log('Wystąpił błąd serwera.');
+      }
+      
+    }
     /*Sprawdzanie etapu pierwszego */
 
-    const CheckFirstStep = () => {
+    const CheckFirstStep = async () => {
+      let MailCorrectBool:boolean|null = null;
         if(step == 1){
+          await checkEmailInDB();
             const emailValidationResult = EmailValidation.validate(email)
             const passwordValidationResult = LoginAndPasswordValidation.validatePassword(password)
             const arePasswordTheSame = (password === password2) ? true : false;
-
-            if(emailValidationResult && passwordValidationResult && arePasswordTheSame) {
+           
+            if(emailValidationResult && passwordValidationResult && arePasswordTheSame && !EmailInDB) {
               setStep(step + 1)
               setProgress(progress + 33.3)
             }
+            else return;
+            
         }
         else return;
     }
