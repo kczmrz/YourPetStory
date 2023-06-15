@@ -15,7 +15,7 @@ import ILinkItemProps from '@/types/interfaces/ILinkItemProps';
 import SideBarContentNavItem from '@/components/dashboard/sideBar/SideBarContentNavItem'
 
 export default function SideBarContent({ onClose, ...rest }: ISidebarProps) {
-const SideBarBackgroundColor = useColorModeValue(ThemeAppDay.lgreen2, "white.100");
+const SideBarBackgroundColor = useColorModeValue(ThemeAppDay.lightAshen, "white.100");
 
 // Tutaj będzie dodawanie zwierzaków
 
