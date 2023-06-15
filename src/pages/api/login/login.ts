@@ -7,7 +7,7 @@ import  User  from "@/mongoDB/schemas/account";
 
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {   
-    const { email } = req.body;
+    const { email, password } = req.body;
     try {
     await dbConnect(process.env.DB_Name as string);
     
@@ -16,15 +16,26 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
      const collection = await getCollection("Users", "users");
      
     /* Czy email jest w bazie */
-     const result = await collection.findOne({ email });
-     if(result)
+     const user = await collection.findOne({ email });
+     console.log(email);
+     if(user)
      {
-        res.status(400).json({message: 'Email' + email + ' znajduje się w bazie danych'})
-        console.log(email + '  znajduje się w bazie danych');
+        console.log('Jest takie konto')
+        
+        if(user.password === password)
+        {
+            console.log('Zalogowano')
+            res.status(200).json({message: 'Zalogowano'})
+        }
+        else {
+            console.log('Haslo nieprawidlowe')
+            res.status(400).json({message: 'Haslo nieprawidlowe'})
+
+        }
      }
      else {
-      res.status(200).json({message: 'Nie ma takiego E-Maila'})
-      console.log(email + ' nie znajduje się');
+      res.status(400).json({message: 'Nie ma takiego konta'})
+      console.log('Nie ma takiego konta');
    }
    }
    catch{

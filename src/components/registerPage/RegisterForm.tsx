@@ -23,8 +23,8 @@ import { User } from '@/mongoDB/schemas/account';
 export default function RegisterForm() {
     const [step, setStep] = useState(1);
     const [progress, setProgress] = useState(33.33);
-    const [EmailInDB, setEmailInDb] = useState<boolean>();
-    const [NickInDB, setNickInDb] = useState<boolean>();
+    const [EmailInDB, setEmailInDb] = useState<boolean>(true);
+    const [NickInDB, setNickInDb] = useState<boolean>(true);
     const toast = useToast();
 
     /*Redux */
@@ -143,7 +143,7 @@ export default function RegisterForm() {
       city: city,
   }
     
-  await axios.post('/api/AddUser', 
+  await axios.post('/api/add/user', 
     AccountData
   ).then(()=> DisplayAlert("Konto zostało założone!"));
       

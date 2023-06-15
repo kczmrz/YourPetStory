@@ -11,8 +11,36 @@ import {
   } from '@chakra-ui/react';
 import Link from 'next/link';
 import Head from 'next/head';
-
+import { useState } from 'react';
 export default function Login() {
+
+ 
+  const [email, setEmail] = useState<string>();
+  const [password, setPassword] = useState<string>();
+
+  const Login = async ()=> {
+    try {
+      const response = await fetch('/api/login/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ email, password })
+      }).then((res)=> {
+        if(res.status === 200) {
+          alert('Zalogowano')
+        }
+        else {
+           alert('Niezalogowano');
+        }
+      })
+      } 
+    catch {
+      console.log('Wystąpił błąd serwera.');
+    }
+    
+  }
+
     return (
         <>
          <Head>
@@ -26,11 +54,12 @@ export default function Login() {
                   <Heading fontSize={'2xl'}>Zaloguj się</Heading>
                   <FormControl id="email">
                   <FormLabel>Email</FormLabel>
-                  <Input type="email" autoComplete="off"/>
+                  <Input type="email" autoComplete="off" value={email} onChange={(event: React.ChangeEvent<HTMLInputElement>) => setEmail(event.target.value)}  />
+                  
                   </FormControl>
                   <FormControl id="password">
                   <FormLabel>Hasło</FormLabel>
-                  <Input type="password" autoComplete="off"/>
+                  <Input type="password" autoComplete="off" value={password} onChange={(event: React.ChangeEvent<HTMLInputElement>) => setPassword(event.target.value)} />
                   </FormControl>
                   <Stack spacing={6}>
                   <Stack
@@ -42,7 +71,7 @@ export default function Login() {
                   </Stack>
                   <Stack direction="row" spacing={4}>
                       <Flex direction={"row"} align={"center"} flex={3}>
-                          <Button colorScheme={'blue'} variant={'solid'} flex={1}>
+                          <Button colorScheme={'blue'} variant={'solid'} flex={1} onClick={Login}>
                           Zaloguj się
                           </Button>
                       </Flex>
