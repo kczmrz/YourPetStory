@@ -15,12 +15,17 @@ export default function PhotosStory() {
           bgSize="cover"
           bgPosition="center"
           bgRepeat="no-repeat"
-          w="400px"
-          h="400px"
+          minH={"300px"}
+          minW={"300px"}
+          w={"35%"}
+          h={"70%"}
           position="relative"
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
           borderRadius={"1rem"}
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
         >
           <Box
             position="absolute"
