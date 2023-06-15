@@ -31,7 +31,7 @@ export default function CalendarItem() {
                     <Box w={"100%"}>
                         <Flex w={"100%"} flexDirection={"row"} alignItems={"center"} justifyContent={"center"} gap={"0.5rem"}>
                             <TimeIcon />
-                            <Text>
+                            <Text fontFamily={"sora"}>
                                 9.00 - 10.00
                             </Text>
                         </Flex>
@@ -63,6 +63,7 @@ export default function CalendarItem() {
                     </MenuButton>
                     <MenuList>
                         <MenuItem>Więcej</MenuItem>
+                        <MenuItem>Zmień datę</MenuItem>
                         <MenuItem>Usuń</MenuItem>
                     </MenuList>
                 </Menu>
