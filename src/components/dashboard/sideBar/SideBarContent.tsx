@@ -8,16 +8,14 @@ import {
 } from '@chakra-ui/react';
 import {
     FiHome,
-    FiTrendingUp,
-    FiCompass,
-    FiStar,
-    FiSettings,
   } from 'react-icons/fi';
+import { ThemeAppDay } from '@/app/ColorsTheme';
 import ISidebarProps from '@/types/interfaces/ISideBarProps';
 import ILinkItemProps from '@/types/interfaces/ILinkItemProps';
 import SideBarContentNavItem from '@/components/dashboard/sideBar/SideBarContentNavItem'
 
 export default function SideBarContent({ onClose, ...rest }: ISidebarProps) {
+const SideBarBackgroundColor = useColorModeValue(ThemeAppDay.lgreen2, "white.100");
 
 // Tutaj będzie dodawanie zwierzaków
 
@@ -31,13 +29,12 @@ const LinkItems: Array<ILinkItemProps> = [
 
     return (
         <Box
-          bg={useColorModeValue('white', 'gray.900')}
+          bg={SideBarBackgroundColor}
           borderRight="1px"
           borderRightColor={useColorModeValue('gray.200', 'gray.700')}
           w={{ base: "full", md: "10vw"}}
           pos="sticky"
           h={"100vh"}
-          bgColor={"yellow"}
           {...rest}>
           <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
             <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold" textAlign={"center"}>

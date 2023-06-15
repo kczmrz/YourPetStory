@@ -5,7 +5,7 @@ import {
 
 export default function AppFeatures() {
     return (
-        <Box h={"35%"} w={"100%"} mb={"2%"}>
+        <Box h={"35%"} w={"100%"} bgColor={"green"}>
 
         </Box>
     )
