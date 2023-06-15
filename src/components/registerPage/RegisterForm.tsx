@@ -24,6 +24,7 @@ export default function RegisterForm() {
     const [step, setStep] = useState(1);
     const [progress, setProgress] = useState(33.33);
     const [EmailInDB, setEmailInDb] = useState<boolean>();
+    const [NickInDB, setNickInDb] = useState<boolean>();
     const toast = useToast();
 
     /*Redux */
@@ -57,9 +58,33 @@ export default function RegisterForm() {
              setEmailInDb(false);
           }
         })
-        
-        
-      } 
+        } 
+      catch {
+        console.log('Wystąpił błąd serwera.');
+      }
+      
+    }
+
+
+    /* Czy Nick jest w bazie danych? */
+    const checkNickInDB = async ()=> {
+      try {
+        const response = await fetch('/api/check/Nick', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ nick })
+        }).then((res)=> {
+          if(res.status === 400) {
+            setNickInDb(true);
+            DisplayAlert("Nick jest już zajęty! Może '" + nick+"2?'");
+          }
+          else {
+            setNickInDb(false);
+          }
+        })
+        } 
       catch {
         console.log('Wystąpił błąd serwera.');
       }
@@ -87,14 +112,15 @@ export default function RegisterForm() {
 
     /*Sprawdzanie etapu drugiego */
 
-    const CheckSecondStep = () => {
+    const CheckSecondStep = async () => {
       if(step == 2){
+          await checkNickInDB();
           const isAgeValid = (age > 0)
           const nickValidationResult = LoginAndPasswordValidation.validateLogin(nick);
           const isCountrySelected = (country != "");
           const isCitySelected = (city != "");
 
-          if(isAgeValid && nickValidationResult && isCountrySelected && isCitySelected) {
+          if(isAgeValid && nickValidationResult && isCountrySelected && isCitySelected && !NickInDB) {
               setStep(step + 1)
               setProgress(progress + 33.3)
           }
@@ -119,7 +145,7 @@ export default function RegisterForm() {
     
   await axios.post('/api/AddUser', 
     AccountData
-  );
+  ).then(()=> DisplayAlert("Konto zostało założone!"));
       
    
 
