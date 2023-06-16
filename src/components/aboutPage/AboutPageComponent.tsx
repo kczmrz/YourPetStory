@@ -7,7 +7,6 @@ import TextDescription from "./TextDescripton";
 
 export default function AboutPageComponent()
 {
-    const HeaderBackgroundColor = useColorModeValue('black', ThemeAppDay.lightAshen);
     const textColor = useColorModeValue('black', ThemeAppDay.pureWhite);
     const BtnHoverBackgroundColor = useColorModeValue(ThemeAppDay.lightAshen, "yellow.400");
 
