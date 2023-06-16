@@ -3,9 +3,9 @@ import {
     Icon,
     Link,
   } from '@chakra-ui/react';
-import INavItemProps from "@/types/interfaces/INavItemProps";
+import NavItemProps from "@/types/interfaces/NavItemProps";
 
-export default function NavItem({ icon, children, ...rest }: INavItemProps) {
+export default function NavItem({ icon, children, ...rest }: NavItemProps) {
     return (
       <Link href="#" style={{ textDecoration: 'none' }} _focus={{ boxShadow: 'none' }}>
         <Flex

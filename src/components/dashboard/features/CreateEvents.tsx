@@ -5,7 +5,8 @@ import { useState } from "react";
 export default function CreateEvents() {
     const eventsBackgroundImage = BgImage.events;
     const [isHovered, setIsHovered] = useState(false);
-    const buttonBackgroundColor = useColorModeValue("#EDF2F7", "#EDF2F7")
+    const buttonBackgroundColor = useColorModeValue("#EDF2F7", "#EDF2F7");
+    const minSize = "250px";
 
     return (
         <Box display="flex"
@@ -15,8 +16,8 @@ export default function CreateEvents() {
         bgSize="cover"
         bgPosition="center"
         bgRepeat="no-repeat"
-        minH={"300px"}
-        minW={"300px"}
+        minH={minSize}
+        minW={minSize}
         w={"35%"}
         h={"70%"}
         position="relative"

@@ -1,8 +1,8 @@
 import { IconType } from "react-icons";
 
-interface ILinkItemProps {
+interface LinkItemProps {
   name: string;
   icon: IconType;
 }
 
-export default ILinkItemProps;
+export default LinkItemProps;

@@ -10,8 +10,8 @@ import {
     FiHome,
   } from 'react-icons/fi';
 import { ThemeAppDay } from '@/app/ColorsTheme';
-import ISidebarProps from '@/types/interfaces/ISideBarProps';
-import ILinkItemProps from '@/types/interfaces/ILinkItemProps';
+import ISidebarProps from '@/types/interfaces/SideBarProps';
+import LinkItemProps from '@/types/interfaces/LinkItemProps';
 import SideBarContentNavItem from '@/components/dashboard/sideBar/SideBarContentNavItem'
 
 export default function SideBarContent({ onClose, ...rest }: ISidebarProps) {
@@ -19,7 +19,7 @@ const SideBarBackgroundColor = useColorModeValue(ThemeAppDay.lightAshen, "white.
 
 // Tutaj będzie dodawanie zwierzaków
 
-const LinkItems: Array<ILinkItemProps> = [
+const LinkItems: Array<LinkItemProps> = [
     { name: 'Home', icon: FiHome },
     // { name: 'Trending', icon: FiTrendingUp },
     // { name: 'Explore', icon: FiCompass },

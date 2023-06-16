@@ -8,6 +8,8 @@ export default function PhotosStory() {
     const [isHovered, setIsHovered] = useState(false);
     const buttonBackgroundColor = useColorModeValue(ThemeAppDay.pureWhite, ThemeAppNight.pureWhite)
     const textColor = useColorModeValue(ThemeAppDay.pureWhite, ThemeAppDay.pureWhite)
+    const minSize = "250px";
+
 
     return (
         <Box
@@ -15,8 +17,8 @@ export default function PhotosStory() {
           bgSize="cover"
           bgPosition="center"
           bgRepeat="no-repeat"
-          minH={"300px"}
-          minW={"300px"}
+          minH={minSize}
+          minW={minSize}
           w={"35%"}
           h={"70%"}
           position="relative"

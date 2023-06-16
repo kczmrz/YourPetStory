@@ -32,8 +32,13 @@ export default function AppDashboard({ children }: { children: ReactNode }) {
           <SideBarContent onClose={onClose} />
         </DrawerContent>
       </Drawer>
-      <SideBarContentNavMobile display={{ base: 'flex', md: 'none' }} onOpen={onOpen} />
-      <Box w={{ base: "100vw", md: "90vw"}} display={"flex"} flexDirection={"column"} gap={"2%"}>
+      <SideBarContentNavMobile display={{ base: 'flex', md: 'none' }} 
+                                onOpen={onOpen} />
+      <Box w={{ base: "100vw", md: "90vw"}} 
+            display={"flex"} 
+            flexDirection={"column"} 
+            gap={"2%"}
+            mt={"2rem"}>
         <AppFeatures />
         <AppCalendar />
       </Box>
