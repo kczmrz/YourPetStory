@@ -7,9 +7,9 @@ import {
   import {
     FiMenu,
   } from 'react-icons/fi';
-import INavMobileProps from "@/types/interfaces/INavMobileProps";
+import NavMobileProps from "@/types/interfaces/NavMobileProps";
 
-export default function SideBarContentNavMobile({ onOpen, ...rest }: INavMobileProps) {
+export default function SideBarContentNavMobile({ onOpen, ...rest }: NavMobileProps) {
 
     return (
         <Flex

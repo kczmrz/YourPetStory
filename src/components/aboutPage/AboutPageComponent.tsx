@@ -7,7 +7,7 @@ import TextDescription from "./TextDescripton";
 
 export default function AboutPageComponent()
 {
-    const HeaderBackgroundColor = useColorModeValue(ThemeAppDay.lightAshen, "yellow.100");
+    const textColor = useColorModeValue('black', ThemeAppDay.pureWhite);
     const BtnHoverBackgroundColor = useColorModeValue(ThemeAppDay.lightAshen, "yellow.400");
 
     const Descriptions: string[] = [
@@ -30,7 +30,7 @@ export default function AboutPageComponent()
                         fontSize={{"2xl": "2xl", xl: "2xl"}} 
                         gap={"2rem"} 
                         mt={"2rem"}>
-                        <Text fontSize={"6xl"} color={HeaderBackgroundColor}>
+                        <Text fontSize={"6xl"} color={textColor}>
                             O nas
                         </Text>
 

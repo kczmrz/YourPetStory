@@ -14,7 +14,7 @@ import AppFeatures from './features/AppFeatures';
 export default function AppDashboard({ children }: { children: ReactNode }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
-    <Box minH={"100vh"} w={"100%"} display={"flex"} flexDirection={{ base: "column", md: "row"}}>
+    <Box h={"100vh"} w={"100%"} display={"flex"} flexDirection={{ base: "column", md: "row"}}>
       <SideBarContent
         onClose={() => onClose}
         display={{ base: 'none', md: 'block' }}
@@ -32,8 +32,13 @@ export default function AppDashboard({ children }: { children: ReactNode }) {
           <SideBarContent onClose={onClose} />
         </DrawerContent>
       </Drawer>
-      <SideBarContentNavMobile display={{ base: 'flex', md: 'none' }} onOpen={onOpen} />
-      <Box w={{ base: "100vw", md: "90vw"}} display={"flex"} flexDirection={"column"} gap={"2%"}>
+      <SideBarContentNavMobile display={{ base: 'flex', md: 'none' }} 
+                                onOpen={onOpen} />
+      <Box w={{ base: "100vw", md: "90vw"}} 
+            display={"flex"} 
+            flexDirection={"column"} 
+            gap={"2%"}
+            mt={"2rem"}>
         <AppFeatures />
         <AppCalendar />
       </Box>

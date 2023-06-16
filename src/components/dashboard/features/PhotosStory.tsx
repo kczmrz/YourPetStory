@@ -7,7 +7,9 @@ export default function PhotosStory() {
     const photosStoryBackgroundImage = BgImage.phototsStory
     const [isHovered, setIsHovered] = useState(false);
     const buttonBackgroundColor = useColorModeValue(ThemeAppDay.pureWhite, ThemeAppNight.pureWhite)
-    const textColor = useColorModeValue(ThemeAppDay.pureWhite, ThemeAppNight.darkGraphite)
+    const textColor = useColorModeValue(ThemeAppDay.pureWhite, ThemeAppDay.pureWhite)
+    const minSize = "250px";
+
 
     return (
         <Box
@@ -15,12 +17,17 @@ export default function PhotosStory() {
           bgSize="cover"
           bgPosition="center"
           bgRepeat="no-repeat"
-          w="400px"
-          h="400px"
+          minH={minSize}
+          minW={minSize}
+          w={"35%"}
+          h={"70%"}
           position="relative"
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
           borderRadius={"1rem"}
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
         >
           <Box
             position="absolute"
@@ -46,7 +53,7 @@ export default function PhotosStory() {
                 <Text fontWeight={"bold"} color={textColor} fontSize={"3xl"} position={"relative"} zIndex={"1"} textAlign={"center"}>
                     Zapisz historię twojego zwierzaka
                 </Text>
-                <Button bgColor={buttonBackgroundColor} _hover={{ cursor: 'pointer' }}>
+                <Button bgColor={buttonBackgroundColor} color={"black"} _hover={{ cursor: 'pointer' }}>
                     Zapisz
                 </Button>
           </Flex>
