@@ -1,11 +1,11 @@
 import { Box, Flex, Text, Button, useColorModeValue } from "@chakra-ui/react"
 import { BgImage } from "@/images";
 import { useState } from "react";
-import { ThemeAppDay, ThemeAppNight } from "@/app/ColorsTheme";
 
 export default function CreateEvents() {
     const eventsBackgroundImage = BgImage.events;
     const [isHovered, setIsHovered] = useState(false);
+    const buttonBackgroundColor = useColorModeValue("#EDF2F7", "#EDF2F7")
 
     return (
         <Box display="flex"
@@ -48,12 +48,12 @@ export default function CreateEvents() {
                     Twórz nowe wydarzenia i przypomnienia
                 </Text>
                 <Flex flexDirection={{ base: "column", xl: "row" }} alignItems={"center"} mt={"2rem"} gap={"1.2rem"}>
-                    <Button w={"fit-content"}>
+                    <Button w={"fit-content"} color={"black"} bgColor={buttonBackgroundColor}>
                         <Text>
                             Nowe wydarzenie
                         </Text>
                     </Button>
-                    <Button w={"fit-content"}>
+                    <Button w={"fit-content"} color={"black"} bgColor={buttonBackgroundColor}>
                         <Text>
                             Nowe Przypomnienie
                         </Text>

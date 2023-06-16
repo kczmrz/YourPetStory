@@ -77,7 +77,8 @@ export default function WithSubnavigation() {
           <Text
             textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
             fontFamily={'heading'}
-            color={useColorModeValue('white', 'white')}>
+            color={useColorModeValue('white', 'white')}
+            h={"30px"}>
               <Link href={'/'}> 
                 <Image src={(colorMode === 'dark') ? ImageLogo.logoWhite : ImageLogo.logoDark} alt={"logo"} width={70}/>
               </Link>
