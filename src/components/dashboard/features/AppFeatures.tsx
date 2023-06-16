@@ -8,7 +8,7 @@ import CreateEvents from './CreateEvents';
 
 export default function AppFeatures() {
     return (
-        <Box h={"35%"} w={"100%"}>
+        <Box h={"40%"} w={"100%"}>
           <Flex flexDirection={"row"} justifyContent={"space-evenly"} alignItems={"center"} h={"100%"}>
             <PhotosStory />
             <CreateEvents />

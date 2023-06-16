@@ -12,7 +12,7 @@ export default function SimpleSidebar({ children }: { children: ReactNode }) {
     const { isOpen, onOpen, onClose } = useDisclosure();
 
     return (
-      <Box minH="100vh" 
+      <Box h={"100vh"}
             bg={useColorModeValue('gray.100', 'gray.900')}>
         <SideBarContent
           onClose={() => onClose}

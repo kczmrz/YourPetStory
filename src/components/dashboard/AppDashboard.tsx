@@ -14,7 +14,7 @@ import AppFeatures from './features/AppFeatures';
 export default function AppDashboard({ children }: { children: ReactNode }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
-    <Box minH={"100vh"} w={"100%"} display={"flex"} flexDirection={{ base: "column", md: "row"}}>
+    <Box h={"100vh"} w={"100%"} display={"flex"} flexDirection={{ base: "column", md: "row"}}>
       <SideBarContent
         onClose={() => onClose}
         display={{ base: 'none', md: 'block' }}
