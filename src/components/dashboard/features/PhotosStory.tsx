@@ -49,11 +49,21 @@ export default function PhotosStory() {
             transform={isHovered ? "scale(1.1)" : "scale(1)"}
             zIndex={1}
           />
-          <Flex h={"100%"} flexDirection={"column"} justifyContent={"center"} alignItems={"center"}>
-                <Text fontWeight={"bold"} color={textColor} fontSize={"3xl"} position={"relative"} zIndex={"1"} textAlign={"center"}>
+          <Flex h={"100%"} 
+                flexDirection={"column"} 
+                justifyContent={"center"} 
+                alignItems={"center"}>
+                <Text fontWeight={"bold"} 
+                      color={textColor} 
+                      fontSize={"3xl"} 
+                      position={"relative"} 
+                      zIndex={"1"} 
+                      textAlign={"center"}>
                     Zapisz historię twojego zwierzaka
                 </Text>
-                <Button bgColor={buttonBackgroundColor} color={"black"} _hover={{ cursor: 'pointer' }}>
+                <Button bgColor={buttonBackgroundColor} 
+                        color={"black"} 
+                        _hover={{ cursor: 'pointer' }}>
                     Zapisz
                 </Button>
           </Flex>

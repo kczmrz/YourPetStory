@@ -44,20 +44,36 @@ export default function CreateEvents() {
             transform={isHovered ? "scale(1.1)" : "scale(1)"}
             zIndex={1}
           />
-            <Flex flexDirection={"column"} justifyContent={"center"} alignItems={"center"}>
-                <Text fontSize={"2xl"} textAlign={"center"} position={"relative"} zIndex={"1"} color={"black"} fontWeight={"bold"}>
-                    Twórz nowe wydarzenia i przypomnienia
-                </Text>
-                <Flex flexDirection={{ base: "column", xl: "row" }} alignItems={"center"} mt={"2rem"} gap={"1.2rem"}>
-                    <Button w={"fit-content"} color={"black"} bgColor={buttonBackgroundColor}>
-                        <Text>
-                            Nowe wydarzenie
-                        </Text>
+            <Flex flexDirection={"column"} 
+                justifyContent={"center"} 
+                alignItems={"center"}>
+                    <Text fontSize={"2xl"} 
+                            textAlign={"center"} 
+                            position={"relative"} 
+                            zIndex={"1"} 
+                            color={"black"} 
+                    fontWeight={"bold"}>
+                        Twórz nowe wydarzenia i przypomnienia
+                    </Text>
+                <Flex flexDirection={{ base: "column", xl: "row" }} 
+                        alignItems={"center"} 
+                        mt={"2rem"} 
+                        gap={"1.2rem"}>
+                    <Button w={"fit-content"} 
+                            color={"black"} 
+                            bgColor={buttonBackgroundColor} 
+                            cursor={"pointer"}>
+                                <Text>
+                                    Nowe wydarzenie
+                                </Text>
                     </Button>
-                    <Button w={"fit-content"} color={"black"} bgColor={buttonBackgroundColor}>
-                        <Text>
-                            Nowe Przypomnienie
-                        </Text>
+                    <Button w={"fit-content"} 
+                            color={"black"} 
+                            bgColor={buttonBackgroundColor} 
+                            cursor={"pointer"}>
+                                <Text>
+                                    Nowe Przypomnienie
+                                </Text>
                     </Button>
                 </Flex>
             </Flex>
