@@ -1,5 +1,6 @@
 export const ImageLogo = {
-  logo1: require("../../public/images/logo/yps2.png"),
+  logoWhite: require("../../public/images/logo/yps2.png"),
+  logoDark: require("../../public/images/logo/yps1.png"),
 };
 
 export const BgImage = {
