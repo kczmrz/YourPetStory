@@ -1,25 +1,9 @@
-import Vaccinations from "@/enums/Vaccinations";
+import EventType from "./EventType";
 
-type Groomer = {
-  petName: string;
-  date: Date;
+type EventTypes = {
+  eventType: EventType;
   price: number;
-  additionalNotes?: string;
+  additionalNotes?: object;
 };
 
-type Vaccination = {
-  petName: string;
-  date: Date;
-  vaccine: Vaccinations;
-  additionalNotes?: string;
-};
-
-type VeterinaryCheckup = {
-  petName: string;
-  date: Date;
-  isVaccinated: boolean;
-  isHealthy: boolean;
-  additionalNotes?: string;
-};
-
-export type EventTypes = Groomer | Vaccination | VeterinaryCheckup;
+export default EventTypes;
