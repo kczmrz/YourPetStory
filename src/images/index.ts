@@ -1,11 +1,11 @@
 export const ImageLogo = {
-  logoWhite: require("../../public/images/logo/yps2.png"),
-  logoDark: require("../../public/images/logo/yps1.png"),
+  logoWhite: require("../../public/images/logo/ypsLogoWhite.png"),
+  logoDark: require("../../public/images/logo/ypsLogoBlack.png"),
 };
 
 export const BgImage = {
-  day: "url('/images/background/bg1.jpg')",
-  night: "url('/images/background/bg2.jpg')",
+  day: "url('/images/background/coreLightBackground.jpg')",
+  night: "url('/images/background/coreDarkBackground.jpg')",
   phototsStory: "url('/images/background/storyBackground.jpg')",
   events: "url('/images/background/eventsBackground.png')",
 };

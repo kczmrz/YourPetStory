@@ -33,13 +33,18 @@ export default function NewEvent() {
 
     return (
         <Flex
-      minH={'100vh'}
-      align={'center'}
-      justify={'center'}
-      bg={useColorModeValue('gray.50', 'gray.800')}>
-      <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
+          minH={'100vh'}
+          align={'center'}
+          justify={'center'}
+          bg={useColorModeValue('gray.50', 'gray.800')}>
+      <Stack spacing={8} 
+              mx={'auto'} 
+              maxW={'lg'} 
+              py={12} 
+              px={6}>
         <Stack align={'center'}>
-          <Heading fontSize={'4xl'} textAlign={'center'}>
+          <Heading fontSize={'4xl'} 
+                    textAlign={'center'}>
             Utwórz wydarzenie
           </Heading>
         </Stack>
@@ -97,7 +102,10 @@ export default function NewEvent() {
             </Stack>
             <Stack pt={6}>
                 <Link href={"#"}>
-                    <Text align={'center'} color={returnTextColor} textDecoration={"none"}>
+                    <Text align={'center'} 
+                          fontWeight={"bold"} 
+                          color={returnTextColor} 
+                          textDecoration={"none"}>
                     Powrót do panelu głównego
                     </Text>
                 </Link>
