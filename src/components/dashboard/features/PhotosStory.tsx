@@ -10,7 +10,6 @@ export default function PhotosStory() {
     const textColor = useColorModeValue(ThemeAppDay.pureWhite, ThemeAppDay.pureWhite)
     const minSize = "250px";
 
-
     return (
         <Box
           bgImage={photosStoryBackgroundImage}
