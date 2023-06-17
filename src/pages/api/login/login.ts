@@ -1,13 +1,10 @@
 import { dbConnect, disconnect, getCollection } from "@/mongoDB/mongo";
 import { NextApiRequest, NextApiResponse } from 'next';
-import { MongoClient } from 'mongodb';
-import  User  from "@/mongoDB/schemas/account";
-
-
 
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {   
     const { email, password } = req.body;
+    
     try {
     await dbConnect(process.env.DB_Name as string);
     
@@ -17,15 +14,19 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
      
     /* Czy email jest w bazie */
      const user = await collection.findOne({ email });
-     console.log(email);
+    
      if(user)
      {
-        console.log('Jest takie konto')
-        
-        if(user.password === password)
+      if(user.password === password)
         {
-            console.log('Zalogowano')
-            res.status(200).json({message: 'Zalogowano'})
+          
+            res.status(200).json({ 
+                userLogin: true,
+                userNick: user.nick,
+                userAvatar: user.avatar,
+                userPets: user.pets
+            
+        })
         }
         else {
             console.log('Haslo nieprawidlowe')
