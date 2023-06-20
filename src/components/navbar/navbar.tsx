@@ -30,12 +30,16 @@ import { ThemeAppDay } from '@/app/ColorsTheme';
 import { ImageLogo } from '@/images';
 import Image from 'next/image';
 import Link from 'next/link';
+import { RootState } from '@/redux/store/store';
+import { useSelector } from 'react-redux';
 
 /* Sub nawigacja w mobilnym wygladzie navbaru, ten przycisk taki do rozwijania */
 export default function WithSubnavigation() {
   const { isOpen, onToggle } = useDisclosure();
   const buttonsBackgroundColor = useColorModeValue('gray.500', 'gray.500')
-  const navbarBackgroundColor = useColorModeValue(ThemeAppDay.lightAshen, '#250045')
+  const navbarBackgroundColor = useColorModeValue(ThemeAppDay.lightAshen, '#250045');
+
+  const { userLogin, userAvatar, userPets, userNick } = useSelector((state: RootState) => state.User)
 
   const { colorMode, toggleColorMode } = useColorMode();
   
@@ -90,39 +94,52 @@ export default function WithSubnavigation() {
         </Flex>
 
       {/* Przyciski logowania */}
-        <Stack
-          flex={{ base: 1, md: 0 }}
-          justify={'flex-end'}
-          direction={'row'}
-          spacing={6}>
-         <Button onClick={toggleColorMode}>
-         <Icon color={'black'} w={3} h={3} as={()=> changeIconToggleBtn()} />
-         </Button>
+      {userLogin
+      
+      ? <Stack
+      flex={{ base: 1, md: 0 }}
+      justify={'flex-end'}
+      direction={'row'}
+      spacing={6}>
+     <Flex display={'row'} mr={'2em'}>
+      <Text>{userNick}</Text>
+     </Flex>
+      </Stack>
 
-         <Link href={'/login'}>
-            <Button
-              
-                fontSize={'sm'}
-               fontWeight={600}
-               bgColor={buttonsBackgroundColor}
-               color={'white'}
-               display={'inline-flex'}
-              >
-               Zaloguj się
-             </Button>
-        </Link>
-        
-        <Link href={'/register'}>
-          <Button
-            display={{ base: 'none', md: 'inline-flex' }}
+      :<Stack
+      flex={{ base: 1, md: 0 }}
+      justify={'flex-end'}
+      direction={'row'}
+      spacing={6}>
+     <Button onClick={toggleColorMode}>
+     <Icon color={'black'} w={3} h={3} as={()=> changeIconToggleBtn()} />
+     </Button>
+
+     <Link href={'/login'}>
+        <Button
+          
             fontSize={'sm'}
-            fontWeight={600}
-            color={'white'}
-            bgColor={buttonsBackgroundColor}>
-            Zarejestruj się
-          </Button>
-          </Link>
-        </Stack>
+           fontWeight={600}
+           bgColor={buttonsBackgroundColor}
+           color={'white'}
+           display={'inline-flex'}
+          >
+           Zaloguj się
+         </Button>
+    </Link>
+    
+    <Link href={'/register'}>
+      <Button
+        display={{ base: 'none', md: 'inline-flex' }}
+        fontSize={'sm'}
+        fontWeight={600}
+        color={'white'}
+        bgColor={buttonsBackgroundColor}>
+        Zarejestruj się
+      </Button>
+      </Link>
+    </Stack>  }
+        
 
       </Flex>
 

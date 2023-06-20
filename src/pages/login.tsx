@@ -12,12 +12,31 @@ import {
 import Link from 'next/link';
 import Head from 'next/head';
 import { useState } from 'react';
+import { useRouter } from 'next/router';
+import { useDispatch } from 'react-redux';
+import { AppState } from '@/redux/features/appSlice';
+import { updateSession } from '@/redux/features/appSlice';
+
 export default function Login() {
 
  
   const [email, setEmail] = useState<string>();
   const [password, setPassword] = useState<string>();
+  const [correct, setCorrect] = useState<boolean>(false);
 
+  const router = useRouter();
+  const dispatch = useDispatch();
+
+  /*Poprawne logowanie */
+  const LoginCorrect = async () => {
+     /*Tworzenie zmiennej, która pobierze informacje o koncie i przekaze to do reduxa */
+     
+    router.push('/dashboard', undefined);
+   
+      
+  }
+
+  /*Funkcja która wysyła zapytanie czy hasło się zgadza itd */
   const Login = async ()=> {
     try {
       const response = await fetch('/api/login/login', {
@@ -26,9 +45,18 @@ export default function Login() {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({ email, password })
-      }).then((res)=> {
+      }).then(async (res)=> {
+        let userToRedux = await res.json();
+        
         if(res.status === 200) {
-          alert('Zalogowano')
+        dispatch(updateSession({data: {
+            userLogin: true,
+            userNick:  userToRedux.userNick,
+            userAvatar:  userToRedux.avatar,
+            userPets:  userToRedux.pets
+          }}));
+          LoginCorrect();
+          
         }
         else {
            alert('Niezalogowano');
