@@ -101,7 +101,7 @@ export default function WithSubnavigation() {
       justify={'flex-end'}
       direction={'row'}
       spacing={6}>
-     <Flex display={'row'}>
+     <Flex display={'row'} mr={'2em'}>
       <Text>{userNick}</Text>
      </Flex>
       </Stack>
