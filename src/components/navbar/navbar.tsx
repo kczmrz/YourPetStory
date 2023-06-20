@@ -7,16 +7,14 @@ import {
   Stack,
   Collapse,
   Icon,
-  Link,
+  Link as ChakraLink,
   Popover,
   PopoverTrigger,
   PopoverContent,
   useColorModeValue,
   useBreakpointValue,
   useDisclosure,
-  Center,
   useColorMode
-  
 } from '@chakra-ui/react';
 
 import {
@@ -25,19 +23,20 @@ import {
   ChevronDownIcon,
   ChevronRightIcon,
   MoonIcon,
-  SunIcon
+  SunIcon,
 } from '@chakra-ui/icons';
 
 import { ThemeAppDay } from '@/app/ColorsTheme';
 import { ImageLogo } from '@/images';
 import Image from 'next/image';
-
+import Link from 'next/link';
 
 /* Sub nawigacja w mobilnym wygladzie navbaru, ten przycisk taki do rozwijania */
 export default function WithSubnavigation() {
   const { isOpen, onToggle } = useDisclosure();
+  const buttonsBackgroundColor = useColorModeValue('gray.500', 'gray.500')
+  const navbarBackgroundColor = useColorModeValue(ThemeAppDay.lightAshen, '#250045')
 
-  /*Przycisk do zmiany motywu */
   const { colorMode, toggleColorMode } = useColorMode();
   
   const changeIconToggleBtn = ()=> {
@@ -50,7 +49,7 @@ export default function WithSubnavigation() {
   return (
     <Box>
       <Flex
-        bg={useColorModeValue(ThemeAppDay.dgreen, 'gray.800')}
+        bg={navbarBackgroundColor}
         color={useColorModeValue('white', 'white')}
         minH={'60px'}
         py={{ base: 2 }}
@@ -78,8 +77,11 @@ export default function WithSubnavigation() {
           <Text
             textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
             fontFamily={'heading'}
-            color={useColorModeValue('white', 'white')}>
-              <Image src={ImageLogo.logo1} alt={"logo"} width={70}/>
+            color={useColorModeValue('white', 'white')}
+            h={"30px"}>
+              <Link href={'/'}> 
+                <Image src={(colorMode === 'dark') ? ImageLogo.logoWhite : ImageLogo.logoDark} alt={"logo"} width={70}/>
+              </Link>
           </Text>
 
           <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
@@ -97,29 +99,29 @@ export default function WithSubnavigation() {
          <Icon color={'black'} w={3} h={3} as={()=> changeIconToggleBtn()} />
          </Button>
 
-
+         <Link href={'/login'}>
+            <Button
+              
+                fontSize={'sm'}
+               fontWeight={600}
+               bgColor={buttonsBackgroundColor}
+               color={'white'}
+               display={'inline-flex'}
+              >
+               Zaloguj się
+             </Button>
+        </Link>
+        
+        <Link href={'/register'}>
           <Button
-            as={'a'}
-            fontSize={'sm'}
-            fontWeight={400}
-            variant={'link'}
-            color={'white'}
-            href={'#'}>
-            Zaloguj się
-          </Button>
-          <Button
-            as={'a'}
             display={{ base: 'none', md: 'inline-flex' }}
             fontSize={'sm'}
             fontWeight={600}
             color={'white'}
-            bg={ThemeAppDay.mint}
-            href={'#'}
-            _hover={{
-              bg: ThemeAppDay.lgreen1,
-            }}>
+            bgColor={buttonsBackgroundColor}>
             Zarejestruj się
           </Button>
+          </Link>
         </Stack>
 
       </Flex>
@@ -134,8 +136,6 @@ export default function WithSubnavigation() {
 
 /*  linki po lewej stronie obok loga */
 const DesktopNav = () => {
-  const linkColor = useColorModeValue('gray.600', 'gray.200');   
-  const linkHoverColor = useColorModeValue('gray.800', 'white');
   const popoverContentBgColor = useColorModeValue('#051B15', 'gray.800');
 
   return (
@@ -144,18 +144,7 @@ const DesktopNav = () => {
         <Box key={navItem.label}>
           <Popover trigger={'hover'} placement={'bottom-start'} >
             <PopoverTrigger>
-             
-              <Link
-                href={navItem.href ?? '#'}
-                fontSize={'sm'}
-                fontWeight={500}
-                color={'white'}
-                _hover={{
-                  textDecoration: 'none',
-                  color: linkHoverColor,
-                }}>
-                {navItem.label}
-              </Link>
+             {/* Miejsce na linki */}
             
             </PopoverTrigger>
 
@@ -184,13 +173,13 @@ const DesktopNav = () => {
 /* divy po najechaniu na te linki po lewej stronie */
 const DesktopSubNav = ({ label, href, subLabel }: NavItem) => {
   return (
-    <Link
+    <ChakraLink
       href={href}
       role={'group'}
       display={'block'}
       p={2}
       rounded={'md'}
-      _hover={{ bg: useColorModeValue(ThemeAppDay.lgreen1, 'gray.900') }}>
+      _hover={{ bg: useColorModeValue('white', 'gray.900') }}>
       <Stack direction={'row'} align={'center'}>
         <Box>
           <Text
@@ -212,7 +201,7 @@ const DesktopSubNav = ({ label, href, subLabel }: NavItem) => {
           <Icon color={'pink.400'} w={5} h={5} as={ChevronRightIcon} />
         </Flex>
       </Stack>
-    </Link>
+    </ChakraLink>
   );
 };
 
@@ -272,9 +261,9 @@ const MobileNavItem = ({ label, children, href }: NavItem) => {
           align={'start'}>
           {children &&
             children.map((child) => (
-              <Link key={child.label} py={2} href={child.href}>
+              <ChakraLink key={child.label} py={2} href={child.href}>
                 {child.label}
-              </Link>
+              </ChakraLink>
             ))}
         </Stack>
       </Collapse>

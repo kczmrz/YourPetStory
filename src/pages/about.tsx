@@ -16,8 +16,7 @@ export default function About()
     </Head>
     <main className="">
        <Box bgImage={BoxBG}  height={{lg: '100vh', sm: '150vh'}}> 
-           {/* ten komponent masz w folderze components i w pliku aboutpage/AboutPageComponent */}
-            <AboutUS/>
+          <AboutUS/>
        </Box>
     </main>
   </>

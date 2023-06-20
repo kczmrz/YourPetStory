@@ -9,7 +9,7 @@ import GithubIcon from './GithubIcon';
 import Link from 'next/link';
 
 export default function Footer() {
-    const FooterBackgroundColor = useColorModeValue(ThemeAppDay.lgreen1, "yellow.100");
+    const FooterBackgroundColor = useColorModeValue(ThemeAppDay.lightAshen, "#620474");
     const TextDescriptionColor = useColorModeValue("black", "white");
 
     return (

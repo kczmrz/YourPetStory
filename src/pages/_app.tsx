@@ -23,8 +23,10 @@ export const theme = extendTheme({
     lg: '62em', // 992px
     xl: '80em', // 1280px
     '2xl': '96em', // 1536px
+  },
+  fonts: {
+    sora: "sora"
   }
- 
 });
 
 function MyApp({ Component, pageProps }: AppProps) {

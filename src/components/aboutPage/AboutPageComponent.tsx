@@ -7,9 +7,8 @@ import TextDescription from "./TextDescripton";
 
 export default function AboutPageComponent()
 {
-    const HeaderBackgroundColor = useColorModeValue(ThemeAppDay.lgreen1, "yellow.100");
-    const BtnBackgroundColor = useColorModeValue(ThemeAppDay.lgreen2, "yellow.600");
-    const BtnHoverBackgroundColor = useColorModeValue(ThemeAppDay.lgreen1, "yellow.400");
+    const textColor = useColorModeValue('black', ThemeAppDay.pureWhite);
+    const BtnHoverBackgroundColor = useColorModeValue(ThemeAppDay.lightAshen, "yellow.400");
 
     const Descriptions: string[] = [
         "Nasza aplikacja to wszechstronne narzędzie, które pomoże Ci w organizacji i dbaniu o ważne wydarzenia związane z Twoimi zwierzakami. Niezależnie od tego, czy posiadasz psa, kota, królika czy innego pupila, nasza aplikacja jest dostosowana do Twoich potrzeb.",
@@ -31,7 +30,7 @@ export default function AboutPageComponent()
                         fontSize={{"2xl": "2xl", xl: "2xl"}} 
                         gap={"2rem"} 
                         mt={"2rem"}>
-                        <Text fontSize={"6xl"} color={HeaderBackgroundColor}>
+                        <Text fontSize={"6xl"} color={textColor}>
                             O nas
                         </Text>
 
@@ -43,7 +42,6 @@ export default function AboutPageComponent()
                         <Button colorScheme={'blue'} 
                             variant={'solid'} 
                             flex={1} 
-                            bg={BtnBackgroundColor} 
                             _hover={{bg: BtnHoverBackgroundColor}}>
                             Zacznij już teraz
                         </Button>
