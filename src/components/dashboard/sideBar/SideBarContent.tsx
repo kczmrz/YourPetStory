@@ -20,7 +20,7 @@ const SideBarBackgroundColor = useColorModeValue(ThemeAppDay.lightAshen, "white.
 // Tutaj będzie dodawanie zwierzaków
 
 const LinkItems: Array<LinkItemProps> = [
-    { name: 'Home', icon: FiHome },
+    { name: 'Zwierzak1', icon: FiHome },
     // { name: 'Trending', icon: FiTrendingUp },
     // { name: 'Explore', icon: FiCompass },
     // { name: 'Favourites', icon: FiStar },
