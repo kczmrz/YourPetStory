@@ -12,18 +12,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     if (req.method === 'POST') {
       try {
         await dbConnect(process.env.DB_Name as string); // Połączenie z bazą danych i "Users" to nazwa bazy danych, a w Schemas jest kolekcja zapisana!
-  
-        const newData = {
-            ID: "Testowe ID",
-            name: user_name,
-            surrname:surrname,
-            email: email,
-            password: password,
-            nick: nick,
-            age: age,
-            country: country,
-            city: city
-        };
+        await  res.status(200).json({ message: 'Pomyslnie zarejestrowano!'});
         await collection.insertOne(req.body);
         
         

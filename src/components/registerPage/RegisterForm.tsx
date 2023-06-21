@@ -17,6 +17,10 @@ import { EmailValidation } from '@/utils/DatasValidation/EmailValidation';
 import { LoginAndPasswordValidation } from '@/utils/DatasValidation/LoginAndPasswordValidation';
 import axios from 'axios';
 import { User } from '@/mongoDB/schemas/account';
+import { useRouter } from 'next/router';
+import { useDispatch } from 'react-redux';
+import { clearRegisterState } from '@/redux/features/registerSlice';
+
 
 
 
@@ -26,19 +30,26 @@ export default function RegisterForm() {
     const [EmailInDB, setEmailInDb] = useState<boolean>(true);
     const [NickInDB, setNickInDb] = useState<boolean>(true);
     const toast = useToast();
+    const router = useRouter();
+    const dispatch = useDispatch();
 
     /*Redux */
-    const { user_name, surrname, email, password, password2, nick, age, country, city } = useSelector((state: RootState) => state.Register)
+    const { user_name, surrname, email, password, password2, nick, age, country, city, avatar } = useSelector((state: RootState) => state.Register)
         
     /*Alerty */
     const DisplayAlert = (message: string)=> {
       toast({
-        title: "Błąd",
+        title: "Informacja!",
         description: message,
         status: 'info',
         duration: 3000,
         isClosable: true,
       })
+    }
+
+    const CreateAnAccount = async() => {
+      DisplayAlert("Konto zostało założone! Możesz się zalogować");
+      router.push('/login', undefined);
     }
     /* Czy email jest w bazie danych? */
     const checkEmailInDB = async ()=> {
@@ -55,6 +66,7 @@ export default function RegisterForm() {
             DisplayAlert("Email jest zajęty!");
           }
           else {
+             DisplayAlert("Email jest wolny, możesz przejść dalej!")
              setEmailInDb(false);
           }
         })
@@ -81,6 +93,7 @@ export default function RegisterForm() {
             DisplayAlert("Nick jest już zajęty! Może '" + nick+"2?'");
           }
           else {
+            DisplayAlert("Nick jest wolny, możesz przejść dalej!")
             setNickInDb(false);
           }
         })
@@ -115,7 +128,7 @@ export default function RegisterForm() {
     const CheckSecondStep = async () => {
       if(step == 2){
           await checkNickInDB();
-          const isAgeValid = (age > 0)
+          const isAgeValid = (age > 13 && age < 99)
           const nickValidationResult = LoginAndPasswordValidation.validateLogin(nick);
           const isCountrySelected = (country != "");
           const isCitySelected = (city != "");
@@ -123,6 +136,9 @@ export default function RegisterForm() {
           if(isAgeValid && nickValidationResult && isCountrySelected && isCitySelected && !NickInDB) {
               setStep(step + 1)
               setProgress(progress + 33.3)
+          }
+          else if(!isAgeValid) {
+             DisplayAlert("Nieprawidłowy wiek! (Minimalny wiek rejestracji wynosi 13 lat)")
           }
       }
       else return;
@@ -141,11 +157,22 @@ export default function RegisterForm() {
       age: age,
       country: country,
       city: city,
+      Avatar: avatar
   }
-    
-  await axios.post('/api/add/user', 
-    AccountData
-  ).then(()=> DisplayAlert("Konto zostało założone!"));
+ 
+  try { 
+    await axios.post('/api/add/user', AccountData).then((req)=>{
+      if(req.status == 200) {
+        dispatch(clearRegisterState());
+        CreateAnAccount();
+        
+      } 
+    })
+  }
+  catch {
+
+  }
+
       
    
 
@@ -218,7 +245,7 @@ export default function RegisterForm() {
                       Register();
                     }}
                   >
-                    Może później
+                    Zarejestruj
                   </Button>
                 ) : null}
               </Flex>

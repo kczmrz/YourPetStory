@@ -1,28 +1,40 @@
 import { Heading, Flex, FormControl, FormLabel, Input, Stack, Center, Avatar, AvatarBadge, IconButton, useColorModeValue, Button, SimpleGrid, GridItem, Text } from '@chakra-ui/react';
 import { SmallCloseIcon, AddIcon } from '@chakra-ui/icons';
-import { useState, useRef, useEffect } from "react";
-
+import { useState, useRef, useEffect, ChangeEvent} from "react";
+import { useDispatch } from 'react-redux';
+import { updateAvatar } from '@/redux/features/registerSlice';
 
 export default function ThirdStep() {
 
-    const [show, setShow] = useState(false);
+
+    /*Redux */
+    const dispatch = useDispatch();
     
     /*Plik ze zdjeciem */
-    const [file, setFile] = useState<any>("");
-   
-    /*Avatar w kółeckzu */
-    const [AvatarInCircle, setAvatarInCircle] = useState<string>("./images/other/blankavatar.jpg");
+    const [file, setFile] = useState<string | null>(null);
 
-    /* File Reader */
-    const reader = new FileReader();
 
-    const setImageFromFile = (e:any) => {
-     
+      /* Konwertowanie do Base 64  🥵 */
+    const convertToBase64 = (e:ChangeEvent<any>) => {
+      let reader = new FileReader();
+      reader.readAsDataURL(e.target.files[0]);
+      reader.onload =()=> {
+        setFile(reader.result as string);
+        dispatch(updateAvatar(reader.result as string));
+      }
+
+      reader.onerror = () => {
+        alert("Błąd");
+      }
     }
 
-    
+    const ResetFile = () => {
+      setFile(null);
+      dispatch(updateAvatar(null));
 
-    return (
+    }
+   
+   return (
         <>
           <Heading w="100%" textAlign={'center'} fontWeight="normal">
             Dodaj swój avatar!
@@ -48,7 +60,7 @@ export default function ThirdStep() {
           <FormLabel>Twój profil</FormLabel>
           <Stack direction={['column', 'row']} spacing={6}>
             <Center>
-              <Avatar size="2xl" src={AvatarInCircle}>
+              <Avatar size="2xl" src={file as string}>
                 <AvatarBadge
                   as={IconButton}
                   size="sm"
@@ -56,14 +68,14 @@ export default function ThirdStep() {
                   top="-10px"
                   colorScheme="red"
                   aria-label="remove Image"
-                  onClick={()=>setFile("")}
+                  onClick={ResetFile}
                   icon={<SmallCloseIcon />}
                 />
               </Avatar>
             </Center>
             <Center w="full">
               <Stack position={"relative"}>
-                  <Input type='file' value={file} onChange={((e:any)=> setFile(e.target.files[0]))} accept=".png,.jpg" maxH={"30px"} maxW={"300px"}/>
+                  <Input type='file' onChange={convertToBase64} accept=".png,.jpg" maxH={"30px"} maxW={"300px"}/>
                 </Stack>
             </Center>
           </Stack>
