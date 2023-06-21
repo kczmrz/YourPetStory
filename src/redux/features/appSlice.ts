@@ -3,7 +3,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 export interface AppState {
     userLogin: boolean;
     userNick: string;
-    userAvatar?: string;
+    userAvatar: string;
     userPets?: any[];
 }
 

@@ -46,14 +46,16 @@ export default function Login() {
         },
         body: JSON.stringify({ email, password })
       }).then(async (res)=> {
-        let userToRedux = await res.json();
+       
+       
         
         if(res.status === 200) {
-        dispatch(updateSession({data: {
+          let userToRedux = await res.json();
+           dispatch(updateSession({data: {
             userLogin: true,
             userNick:  userToRedux.userNick,
-            userAvatar:  userToRedux.avatar,
-            userPets:  userToRedux.pets
+            userAvatar:  userToRedux.userAvatar,
+            userPets:  userToRedux.userPets
           }}));
           LoginCorrect();
           

@@ -14,7 +14,8 @@ import {
   useColorModeValue,
   useBreakpointValue,
   useDisclosure,
-  useColorMode
+  useColorMode, 
+  Image as AvatarImage
 } from '@chakra-ui/react';
 
 import {
@@ -24,6 +25,7 @@ import {
   ChevronRightIcon,
   MoonIcon,
   SunIcon,
+  SettingsIcon
 } from '@chakra-ui/icons';
 
 import { ThemeAppDay } from '@/app/ColorsTheme';
@@ -32,23 +34,36 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { RootState } from '@/redux/store/store';
 import { useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
 
 /* Sub nawigacja w mobilnym wygladzie navbaru, ten przycisk taki do rozwijania */
 export default function WithSubnavigation() {
   const { isOpen, onToggle } = useDisclosure();
   const buttonsBackgroundColor = useColorModeValue('gray.500', 'gray.500')
   const navbarBackgroundColor = useColorModeValue(ThemeAppDay.lightAshen, '#250045');
-
+   
   const { userLogin, userAvatar, userPets, userNick } = useSelector((state: RootState) => state.User)
 
   const { colorMode, toggleColorMode } = useColorMode();
   
+  const [navbarAvatar, setNavbarAvatar] = useState<string>("");
+
   const changeIconToggleBtn = ()=> {
     if(colorMode === 'dark') {
       return <MoonIcon/>
     }
     else return <SunIcon/>
   }
+
+  useEffect(()=> {
+     if(userAvatar == null || userAvatar == "")
+     {
+      setNavbarAvatar("./public/images/other/blankavatar.jpg");
+     }
+     else {
+      setNavbarAvatar(userAvatar);
+     }
+  }, [userAvatar])
 
   return (
     <Box>
@@ -101,8 +116,10 @@ export default function WithSubnavigation() {
       justify={'flex-end'}
       direction={'row'}
       spacing={6}>
-     <Flex display={'row'} mr={'2em'}>
-      <Text>{userNick}</Text>
+     <Flex display={'flex'} flexDirection={'row'} mr={'1em'}>
+      <Box flex="1" width={'40px'} mr="0.5em"> <AvatarImage src={navbarAvatar} alt="avatar" borderRadius={'2em'} /> </Box>
+      <Box flex="1" width={'40px'}> <Button><SettingsIcon/> </Button> </Box>
+
      </Flex>
       </Stack>
 

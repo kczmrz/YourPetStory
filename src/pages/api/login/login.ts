@@ -23,7 +23,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             res.status(200).json({ 
                 userLogin: true,
                 userNick: user.nick,
-                userAvatar: user.avatar,
+                userAvatar: user.Avatar,
                 userPets: user.pets
             
         })

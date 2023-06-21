@@ -1,7 +1,7 @@
 import FirstStep from "@/components/registerPage/firstStep";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-interface FirstStep {
+interface iRegister {
     user_name:string;
     surrname: string;
     email: string;
@@ -10,11 +10,12 @@ interface FirstStep {
     nick: string;
     age: number;
     country: string;
-    city:string
+    city:string;
+    avatar?: string | null;
 }
 
 
-const initialState:FirstStep = {
+const initialState:iRegister = {
     user_name: "",
     surrname: "",
     email: "",
@@ -23,7 +24,8 @@ const initialState:FirstStep = {
     nick: "",
     age: 0,
     country: "",
-    city:""
+    city:"", 
+    avatar: null
 }
 
 
@@ -82,6 +84,24 @@ export const Register = createSlice({
         state.city =  action.payload
       },
 
+      updateAvatar: (state, action: PayloadAction<string | null>) => {
+        state.avatar =  action.payload
+      },
+
+      clearRegisterState:(state) => {
+        state.user_name = "",
+        state.surrname = "",
+        state.email = "",
+        state.password = "",
+        state.password2 = "",
+        state.nick= "",
+        state.age = 0,
+        state.country = "",
+        state.city= "", 
+        state.avatar = null
+      }
+
+
     }});
         
 
@@ -90,5 +110,5 @@ export const Register = createSlice({
 
   
   export const { updateNameForm, updateSurrNameForm, updateEmail, updatePassword, updatePassword2, 
-    updateNickname, updateAge, updateCountry, updateCity } = Register.actions;
+    updateNickname, updateAge, updateCountry, updateCity, updateAvatar, clearRegisterState } = Register.actions;
   export default Register.reducer;

@@ -16,7 +16,7 @@ export interface User {
     city: string;
 
     pets?: any[];  /*Trzeba będzie zrobić interface Pet, bo to będzie array z obiektami. I w interface pet musi być wszystko */
-    userAvatar?: string; /*Można potem potem dodać user avatar, ale na tym narazie się nie skupiajmy, to taki bajer :p */
+    Avatar?: string | null; 
 }
 
 
@@ -32,7 +32,7 @@ const UserSchema =  new Schema<User>({
     city: { type: String, required: true },
 
     pets: { type: String, required: false },
-    userAvatar: { type: String, required: false },
+    Avatar: { type: [String, null], required: false },
 }, { collection: 'users' });   /* Ta ostatnia linijka to nazwa kolekcji */
 
 
