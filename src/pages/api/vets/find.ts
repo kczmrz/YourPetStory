@@ -23,8 +23,6 @@ export default async function handler(
       });
       const page = await browser.newPage();
       await page.goto(vetsDatabaseLink + keyword);
-      await page.waitForSelector("#onetrust-accept-btn-handler");
-      await page.click("#onetrust-accept-btn-handler");
 
       // const vetOffers = document.querySelectorAll("#search-content > ul > li");
       const offers = await page.$$("#search-content > ul > li");
@@ -36,16 +34,19 @@ export default async function handler(
           `#search-content > ul > li:nth-child(${i}) div.card-body div.result-column .dp-doctor-card .media .media-body h3 a`,
           (element) => element.innerText
         );
+        console.log(name);
 
         const address = await page.$eval(
-          `#search-content > ul > li:nth-child(${i}) div.card-body div.result-column .doctor-card-address div:nth-child(2) .align-items-top .overflow-hidden p span`,
+          `#search-content > ul > li:nth-child(${i}) div.card-body div.result-column .doctor-card-address div:nth-child(2) .d-flex span:nth-child(1)`,
           (element) => element.innerText
         );
+        console.log(address);
 
         const imageLink = await page.$eval(
           `#search-content > ul > li:nth-child(${i}) div div div div.col-lg-6.result-column.p-2 div.dp-doctor-card.dp-doctor-card-md div div.pr-1 a span img`,
           (element) => element.src
         );
+        console.log(imageLink);
 
         console.log(name, address, imageLink);
       }
