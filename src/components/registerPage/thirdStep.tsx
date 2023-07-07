@@ -3,6 +3,7 @@ import { SmallCloseIcon, AddIcon } from '@chakra-ui/icons';
 import { useState, useRef, useEffect, ChangeEvent} from "react";
 import { useDispatch } from 'react-redux';
 import { updateAvatar } from '@/redux/features/registerSlice';
+import { BlankAvatar } from '@/images';
 
 export default function ThirdStep() {
 
@@ -11,7 +12,7 @@ export default function ThirdStep() {
     const dispatch = useDispatch();
     
     /*Plik ze zdjeciem */
-    const [file, setFile] = useState<string | null>(null);
+    const [file, setFile] = useState<string | null>(BlankAvatar);
 
 
       /* Konwertowanie do Base 64  🥵 */
@@ -29,8 +30,8 @@ export default function ThirdStep() {
     }
 
     const ResetFile = () => {
-      setFile(null);
-      dispatch(updateAvatar(null));
+      setFile(BlankAvatar);
+      dispatch(updateAvatar(BlankAvatar));
 
     }
    

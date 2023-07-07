@@ -1,9 +1,9 @@
-import { Link, Flex, Text } from "@chakra-ui/react"
+import { Link as ChakraLink, Flex, Text } from "@chakra-ui/react"
 import  { AddIcon } from "@chakra-ui/icons"
 
 export default function SideBarAddAnimal() {
     return(
-        <Link href="#" 
+        <ChakraLink href="#" 
             style={{ textDecoration: 'none' }} 
             _focus={{ boxShadow: 'none' }} 
             mt={"0.5rem"}>
@@ -23,6 +23,6 @@ export default function SideBarAddAnimal() {
                         Dodaj pupila
                     </Text>
                 </Flex>
-        </Link>
+        </ChakraLink>
     )
 }
