@@ -8,6 +8,7 @@ import {
 } from '@chakra-ui/react';
 import SideBarContent from './SideBarContent';
 
+
 export default function SimpleSidebar({ children }: { children: ReactNode }) {
     const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -31,7 +32,7 @@ export default function SimpleSidebar({ children }: { children: ReactNode }) {
           </DrawerContent>
         </Drawer>
         {/* mobilenav */}
-        <MobileNav display={{ base: 'flex', md: 'none' }} onOpen={onOpen} />
+        
         <Box ml={{ base: 0, md: 60 }} p="4">
           {children}
         </Box>

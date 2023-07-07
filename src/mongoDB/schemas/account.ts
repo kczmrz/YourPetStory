@@ -30,7 +30,6 @@ const UserSchema =  new Schema<User>({
     age: { type: Number, required: true },
     country: { type: String, required: true },
     city: { type: String, required: true },
-
     pets: { type: String, required: false },
     Avatar: { type: [String, null], required: false },
 }, { collection: 'users' });   /* Ta ostatnia linijka to nazwa kolekcji */

@@ -35,6 +35,7 @@ import Link from 'next/link';
 import { RootState } from '@/redux/store/store';
 import { useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
+import { BlankAvatar } from '@/images';
 
 /* Sub nawigacja w mobilnym wygladzie navbaru, ten przycisk taki do rozwijania */
 export default function WithSubnavigation() {
@@ -58,7 +59,7 @@ export default function WithSubnavigation() {
   useEffect(()=> {
      if(userAvatar == null || userAvatar == "")
      {
-      setNavbarAvatar("./public/images/other/blankavatar.jpg");
+      setNavbarAvatar(BlankAvatar);
      }
      else {
       setNavbarAvatar(userAvatar);
@@ -117,8 +118,13 @@ export default function WithSubnavigation() {
       direction={'row'}
       spacing={6}>
      <Flex display={'flex'} flexDirection={'row'} mr={'1em'}>
+      <Box flex="1" mr="0.5em">
+        <Button onClick={toggleColorMode}>
+             <Icon color={'black'} w={3} h={3} as={()=> changeIconToggleBtn()} />
+         </Button>
+      </Box>
       <Box flex="1" width={'40px'} mr="0.5em"> <AvatarImage src={navbarAvatar} alt="avatar" borderRadius={'2em'} /> </Box>
-      <Box flex="1" width={'40px'}> <Button><SettingsIcon/> </Button> </Box>
+      <Box flex="1" width={'40px'}> <Button bgColor={'transparent'}><SettingsIcon/> </Button> </Box>
 
      </Flex>
       </Stack>

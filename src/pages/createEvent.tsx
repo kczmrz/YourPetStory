@@ -6,7 +6,8 @@ export default function CreateEvent() {
         console.log(res)
     })
 
-    return (
+    return (<> 
         <NewEvent />
+        </>
     )
 }
