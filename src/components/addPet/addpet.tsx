@@ -54,6 +54,27 @@ export default function AddPet() {
         setDateIsValid(false);
       }
     }
+
+    const [file, setFile] = useState<string | null>();
+
+    /* Konwertowanie do Base 64  🥵 */
+    const convertToBase64 = (e:ChangeEvent<any>) => {
+      let reader = new FileReader();
+      reader.readAsDataURL(e.target.files[0]);
+      reader.onload =()=> {
+        setFile(reader.result as string);
+     }
+
+      reader.onerror = () => {
+        alert("Błąd");
+      }
+    }
+
+    const ResetFile = () => {
+      setFile(null);
+      
+
+    }
   
     return (
       <>
@@ -93,6 +114,13 @@ export default function AddPet() {
                 :<p>Data nieprawidłowa</p>}
               </FormControl>
 
+              <FormControl mt={4}>
+                <FormLabel>Zdjęcie zwierzaka</FormLabel>
+                <Input type="file" onChange={convertToBase64} />
+                <Button mt={4} colorScheme="red" onClick={ResetFile}>
+                  Usuń obrazek
+                </Button>
+            </FormControl>
 
             </ModalBody>
   
