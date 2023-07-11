@@ -10,6 +10,7 @@ export default function AddPet() {
     
     const [petname, setPetname] = useState<string>("");
     const [pettype, setPetType] = useState<string>("");
+    const [petBreed, setPetBreed] = useState<string>("");
   
     const pets: string[] = [
       "Pies",
@@ -101,6 +102,14 @@ export default function AddPet() {
                    {pets.map((id, key) => <option value={id} key={key}>{id} </option>)}
                 </Select>
               </FormControl>
+
+
+              <FormControl mt={4}>
+                <FormLabel>Rasa*:</FormLabel>
+                <Input value={petBreed} onChange={(e:ChangeEvent<HTMLInputElement>)=>setPetBreed(e.target.value)} placeholder='Rasa' />
+
+              </FormControl>
+
 
               <FormControl mt={4}>
                 <FormLabel>Data urodzin:</FormLabel>
