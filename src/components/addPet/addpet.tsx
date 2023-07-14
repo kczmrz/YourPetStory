@@ -1,13 +1,26 @@
 import { useDisclosure } from "@chakra-ui/react"
-import { Modal, ModalOverlay, ModalContent,ModalHeader, ModalCloseButton, ModalBody, ModalFooter, Button, FormControl, FormLabel, Input, Select } from "@chakra-ui/react"
+import { Modal, ModalOverlay, ModalContent,ModalHeader, ModalCloseButton, ModalBody, ModalFooter, Button, FormControl, FormLabel, Input, Select, Flex, Text } from "@chakra-ui/react"
 import { ChangeEvent, useRef, useState } from "react";
 import  { AddIcon } from "@chakra-ui/icons"
 import { parseISO, isValid } from "date-fns";
-
+import axios from "axios";
+import { Pet } from "@/mongoDB/schemas/pet";
+import { useToast } from "@chakra-ui/react";
 
 export default function AddPet() {
     const { isOpen, onOpen, onClose } = useDisclosure();
     
+    /*Alerty */
+    const toast = useToast();
+    const DisplayAlert = (message: string)=> {
+        toast({
+          title: "Informacja!",
+          description: message,
+          status: 'info',
+          duration: 3000,
+          isClosable: true,
+        })
+      }
     const [petname, setPetname] = useState<string>("");
     const [pettype, setPetType] = useState<string>("");
     const [petBreed, setPetBreed] = useState<string>("");
@@ -33,29 +46,7 @@ export default function AddPet() {
       "Kanarek"
     ];
    
-    const [DateIsValid, setDateIsValid] = useState<boolean>(false);
-    const [Date, setDate] = useState<Date | any>();
-
-    const onChangeDate = (event: ChangeEvent<HTMLInputElement>) => {
-      const inputDate = event.target.value;
-      const regex = /^(\d{2})-(\d{2})-(\d{4})$/;
-      const isValidFormat = regex.test(inputDate);
-
-      if(isValidFormat)
-      {
-        const inputDate: string = event.target.value;
-        const parsedDate: Date = parseISO(inputDate);
-        const isValidFormat: boolean = isValid(parsedDate);
-          setDate(isValidFormat ? parsedDate : null);
-          setDateIsValid(true);
-         
-      }
-      else {
-        setDate(inputDate);
-        setDateIsValid(false);
-      }
-    }
-
+    
     const [file, setFile] = useState<string | null>();
 
     /* Konwertowanie do Base 64  🥵 */
@@ -73,8 +64,75 @@ export default function AddPet() {
 
     const ResetFile = () => {
       setFile(null);
-      
+    }
 
+  /* Data */
+    const [DayDate, setDayDate] = useState<number>(1);
+    const [MonthDate, setMonthDate] = useState<string>("Styczeń");
+    const [YearDate, setYearDate] = useState<number>(2023);
+
+    const [MaxDays, setMaxDays] = useState<number>(28);
+    const [DataCorrect, setDataCorrect] = useState<boolean>(false);
+
+    const CheckDate = () => {
+       if(MonthDate == "Styczeń" || MonthDate == "Marzec" || MonthDate == "Maj" || MonthDate == "Lipiec" || MonthDate == "Sierpień" || MonthDate == "Październik" || MonthDate == "Grudzień")
+       {
+        setMaxDays(31);
+       }
+       else if(MonthDate == "Luty") {
+        setMaxDays(28);
+       }
+       else {
+        setMaxDays(30);
+       }
+
+       if( DayDate <= MaxDays && YearDate >= 1990 && YearDate <= 2023 && YearDate != null)
+       {
+        setDataCorrect(true)
+       }
+       else {
+        setDataCorrect(false);
+       }
+    }
+
+
+    /*Dodawanie zwierzaka do bazy danych */
+    const AddPetToDb = async () => {
+      if(petBreed == null) {
+        setPetBreed("");
+      }
+      
+     
+      const AccountData:Pet =  {
+        ID_Owner: "string",
+        ID_Pet: "string",
+        name: petname,
+        DateOfBirth: {
+          Day: 1,
+          Month: "Styczen",
+          Year: 2002
+        },
+        Type: pettype,
+        Breed: petBreed,
+        profileImage: file
+        
+     }
+   
+    try { 
+      await axios.post('/api/add/pet', AccountData).then((req)=>{
+        if(req.status == 200) {
+          DisplayAlert("Dodano zwierzaka!");
+          
+        } 
+      })
+    }
+    catch {
+    console.log("Wystąpił błąd....");
+    }
+  
+        
+     
+  
     }
   
     return (
@@ -113,14 +171,32 @@ export default function AddPet() {
 
               <FormControl mt={4}>
                 <FormLabel>Data urodzin:</FormLabel>
-                <Input
-                  placeholder="DD-MM-YYYY"
-                  value={Date}
-                  onChange={onChangeDate}
-                />
-                {DateIsValid 
+              
+                <Select flex="1" mr="2" placeholder="Miesiąc" onChange={(e:ChangeEvent<HTMLSelectElement>) => setMonthDate(e.target.value)} disabled={DataCorrect} >
+                <option value="Styczeń">Styczeń</option>
+                <option value="Luty">Luty</option>
+                <option value="Marzec">Marzec</option>
+                <option value="Kwiecień">Kwiecień</option>
+                <option value="Maj">Maj</option>
+                <option value="Czerwiec">Czerwiec</option>
+                <option value="Lipiec">Lipiec</option>
+                <option value="Sierpień">Sierpień</option>
+                <option value="Wrzesień">Wrzesień</option>
+                <option value="Październik">Październik</option>
+                <option value="Listopad">Listopad</option>
+                <option value="Grudzień">Grudzień</option>
+                </Select>
+
+                <Input type="number" min={1} max={MaxDays} value={DayDate} onChange={(e:ChangeEvent<HTMLInputElement>) => setDayDate(parseInt(e.target.value, 10))} placeholder="Dzień" disabled={DataCorrect}  />
+                <Input type="number" min={1990} value={YearDate} onChange={(e: ChangeEvent<HTMLInputElement>) => setYearDate(parseInt(e.target.value, 10))} placeholder="Rok" disabled={DataCorrect}  />
+                <Flex mt={4}> 
+                <Button colorScheme='blue'fontSize={12} onClick={CheckDate} >Check date </Button>
+               <Text ml={4} mt={2}> 
+                {DataCorrect 
                 ? <p>Data prawidłowa </p>
                 :<p>Data nieprawidłowa</p>}
+                </Text>
+                </Flex>
               </FormControl>
 
               <FormControl mt={4}>
@@ -134,9 +210,12 @@ export default function AddPet() {
             </ModalBody>
   
             <ModalFooter>
-              <Button colorScheme='green' mr={3}>
+              {DataCorrect 
+                ? <Button colorScheme='green' mr={3} onClick={AddPetToDb}>
                 Dodaj!
               </Button>
+              :null}
+             
               <Button onClick={onClose} colorScheme="red">Anuluj</Button>
             </ModalFooter>
           </ModalContent>
