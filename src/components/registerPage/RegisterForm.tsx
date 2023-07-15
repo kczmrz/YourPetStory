@@ -20,6 +20,7 @@ import { User } from '@/mongoDB/schemas/account';
 import { useRouter } from 'next/router';
 import { useDispatch } from 'react-redux';
 import { clearRegisterState } from '@/redux/features/registerSlice';
+import { v4 as uuidv4 } from 'uuid';
 
 
 
@@ -148,7 +149,7 @@ export default function RegisterForm() {
   const Register = async () => {
 
     const AccountData:User =  {
-      ID: "Testowe ID",
+      ID: uuidv4(),
       name: user_name,
       surrname:surrname,
       email: email,

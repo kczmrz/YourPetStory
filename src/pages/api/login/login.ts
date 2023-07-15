@@ -24,7 +24,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                 userLogin: true,
                 userNick: user.nick,
                 userAvatar: user.Avatar,
-                userPets: user.pets
+                userID: user.ID
             
         })
         }

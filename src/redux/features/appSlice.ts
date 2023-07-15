@@ -4,7 +4,8 @@ export interface AppState {
     userLogin: boolean;
     userNick: string;
     userAvatar: string;
-    userPets?: any[];
+    userID:string;
+
 }
 
 export interface sessionData {
@@ -15,7 +16,8 @@ const initialState:AppState ={
     userLogin: false,
     userNick: "",
     userAvatar: "",
-    userPets: [""]
+    userID: ""
+  
 }
 
 
@@ -27,7 +29,8 @@ export const AppStateSlice = createSlice({
            state.userLogin = true;
            state.userNick = action.payload.data.userNick;
            state.userAvatar = action.payload.data.userAvatar;
-           state.userPets = action.payload.data.userPets;
+           state.userID = action.payload.data.userID
+         
          },
      } 
 })

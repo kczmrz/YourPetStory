@@ -6,10 +6,14 @@ import { parseISO, isValid } from "date-fns";
 import axios from "axios";
 import { Pet } from "@/mongoDB/schemas/pet";
 import { useToast } from "@chakra-ui/react";
+import { useSelector } from "react-redux";
+import { RootState } from "@/redux/store/store";
+import { v4 as uuidv4 } from 'uuid';
 
 export default function AddPet() {
     const { isOpen, onOpen, onClose } = useDisclosure();
     
+    const { userID } = useSelector((state: RootState) => state.User)
     /*Alerty */
     const toast = useToast();
     const DisplayAlert = (message: string)=> {
@@ -104,13 +108,13 @@ export default function AddPet() {
       
      
       const AccountData:Pet =  {
-        ID_Owner: "string",
-        ID_Pet: "string",
+        ID_Owner: userID,
+        ID_Pet: petname + uuidv4().slice(0, 8),
         name: petname,
         DateOfBirth: {
-          Day: 1,
-          Month: "Styczen",
-          Year: 2002
+          Day: DayDate,
+          Month: MonthDate,
+          Year: YearDate
         },
         Type: pettype,
         Breed: petBreed,

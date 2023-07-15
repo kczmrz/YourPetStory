@@ -55,10 +55,10 @@ export default function Login() {
             userLogin: true,
             userNick:  userToRedux.userNick,
             userAvatar:  userToRedux.userAvatar,
-            userPets:  userToRedux.userPets
+            userID: userToRedux.userID
           }}));
           LoginCorrect();
-          
+         
         }
         else {
            alert('Niezalogowano');
