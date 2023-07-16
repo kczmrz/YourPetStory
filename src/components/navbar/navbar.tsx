@@ -43,7 +43,7 @@ export default function WithSubnavigation() {
   const buttonsBackgroundColor = useColorModeValue('gray.500', 'gray.500')
   const navbarBackgroundColor = useColorModeValue(ThemeAppDay.lightAshen, '#250045');
    
-  const { userLogin, userAvatar, userPets, userNick } = useSelector((state: RootState) => state.User)
+  const { userLogin, userAvatar, userNick } = useSelector((state: RootState) => state.User)
 
   const { colorMode, toggleColorMode } = useColorMode();
   
