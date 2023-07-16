@@ -4,7 +4,7 @@ import { ChangeEvent, useRef, useState } from "react";
 import  { AddIcon } from "@chakra-ui/icons"
 import { parseISO, isValid } from "date-fns";
 import axios from "axios";
-import { Pet } from "@/mongoDB/schemas/pet";
+import { PetIE } from "@/mongoDB/schemas/pet";
 import { useToast } from "@chakra-ui/react";
 import { useSelector } from "react-redux";
 import { RootState } from "@/redux/store/store";
@@ -107,7 +107,7 @@ export default function AddPet() {
       }
       
      
-      const AccountData:Pet =  {
+      const AccountData:PetIE =  {
         ID_Owner: userID,
         ID_Pet: petname + uuidv4().slice(0, 8),
         name: petname,

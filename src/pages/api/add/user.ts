@@ -8,7 +8,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const { user_name, surrname, email, password, password2, nick, age, country, city } = req.body;
 
     /*Pierwszy string to nazwa bazy danych, a drugi to kolekcja w tej bazie */
-    const collection = await getCollection("Users", "pets");
+    const collection = await getCollection("Users", "users");
     if (req.method === 'POST') {
       try {
         await dbConnect(process.env.DB_Name as string); // Połączenie z bazą danych i "Users" to nazwa bazy danych, a w Schemas jest kolekcja zapisana!

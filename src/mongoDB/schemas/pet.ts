@@ -1,9 +1,9 @@
-import { Schema, Document } from 'mongoose';
+import { Schema } from 'mongoose';
 import mongoose from 'mongoose';
 
 
 
-export interface Pet {
+export interface PetIE {
     ID_Owner: string;   /* ID Wlasciciela zwierzaka */
     ID_Pet: string; /*ID zwierzaka */
     name: string;
@@ -20,7 +20,7 @@ export interface Pet {
 }
 
 
-const PetSchema =  new Schema<Pet>({
+const PetSchema =  new Schema<PetIE>({
     ID_Owner: { type: String, required: true },
     ID_Pet: { type: String, required: true },
     name: { type: String, required: true },
@@ -33,9 +33,8 @@ const PetSchema =  new Schema<Pet>({
     Breed: {type: String, required: true},
     profileImage: { type: [String, null], required: true },
  
-}, { collection: 'pets' });   /* Ta ostatnia linijka to nazwa kolekcji */
+}, { collection: 'pets' });   
 
 
 
-
-export default mongoose.models.Pet || mongoose.model<Pet>('Pet', PetSchema);
+export default mongoose.models.PetIE || mongoose.model<PetIE>('Pet', PetSchema);
