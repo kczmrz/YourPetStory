@@ -19,6 +19,8 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { PetIE } from '@/mongoDB/schemas/pet';
 
+
+
 export default function  SideBarContent({ onClose, ...rest }: ISidebarProps) {
 const SideBarBackgroundColor = useColorModeValue(ThemeAppDay.lightAshen, "white.100");
 
@@ -50,12 +52,12 @@ const getPets = async () => await axios.get('/api/get/pets?ID_Owner=8195dd9c-ddf
                   fontFamily="monospace" 
                   fontWeight="bold" 
                   textAlign={"center"}>
-              Twoje zwierzaki <button onClick={getPets}>Refresh</button>
+              Twoje zwierzaki 
             </Text>
             <CloseButton display={{ base: 'flex', md: 'none' }} onClick={onClose} />
           </Flex>
           {
-          myPetsList.map((pet, key)=>  <p key={key}>{pet.name}</p>)
+          myPetsList.map((pet, key)=>  ( <SideBarContentNavItem icon={FiHome} key={key}> {pet.name}</SideBarContentNavItem>))
            }
           <Divider mt={"0.5rem"} mb={"0.5rem"}/>
           <SideBarAddAnimal />
@@ -63,9 +65,3 @@ const getPets = async () => await axios.get('/api/get/pets?ID_Owner=8195dd9c-ddf
       );
 }
 
-
-
-
-/* 
-<SideBarContentNavItem key={pet.ID_Owner} icon={FiHome}>
-         </SideBarContentNavItem>  */
