@@ -10,6 +10,8 @@ Your Pet Story is a web application designed to help pet owners manage and organ
 3. npm run dev
 ```
 
+## PROJEKT JEST NIESKONCZONY I NIE BEDZIEMY GO PREZENTOWAC 
+
 ## Features
 
 * Login and Register
