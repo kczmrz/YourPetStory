@@ -4,7 +4,7 @@ import { ReactText } from "react";
 
 interface NavItemProps extends FlexProps {
   icon: IconType;
-  children: ReactText;
+  children: any;
 }
 
 export default NavItemProps;

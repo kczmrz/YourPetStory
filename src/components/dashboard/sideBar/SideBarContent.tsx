@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { ReactText } from 'react';
 import {
   Box,
   CloseButton,
   Flex,
   useColorModeValue,
   Text,
-  Divider 
+  Divider, 
+  Button
 } from '@chakra-ui/react';
 import {
     FiHome,
@@ -56,8 +57,9 @@ const getPets = async () => await axios.get('/api/get/pets?ID_Owner=8195dd9c-ddf
             </Text>
             <CloseButton display={{ base: 'flex', md: 'none' }} onClick={onClose} />
           </Flex>
+          <Button marginLeft={'12'} onClick={getPets}>Odśwież</Button>
           {
-          myPetsList.map((pet, key)=>  ( <SideBarContentNavItem icon={FiHome} key={key}> {pet.name}</SideBarContentNavItem>))
+          myPetsList.map((pet, key) =>  (<SideBarContentNavItem icon={FiHome} key={key}> {pet.name} </SideBarContentNavItem>))
            }
           <Divider mt={"0.5rem"} mb={"0.5rem"}/>
           <SideBarAddAnimal />
