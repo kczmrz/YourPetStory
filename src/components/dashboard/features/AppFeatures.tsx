@@ -11,7 +11,7 @@ export default function AppFeatures() {
         <Box h={"40%"} w={"100%"}>
           <Flex flexDirection={"row"} justifyContent={"space-evenly"} alignItems={"center"} h={"100%"}>
             <PhotosStory />
-            <CreateEvents />
+            
           </Flex>
         </Box>
     )

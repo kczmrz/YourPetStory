@@ -58,12 +58,12 @@ export default function PhotosStory() {
                       position={"relative"} 
                       zIndex={"1"} 
                       textAlign={"center"}>
-                    Zapisz historię twojego zwierzaka
-                </Text>
+                    Dodaj event!
+                  </Text>
                 <Button bgColor={buttonBackgroundColor} 
                         color={"black"} 
                         _hover={{ cursor: 'pointer' }}>
-                    Zapisz
+                    Dodaj
                 </Button>
           </Flex>
         </Box>
